@@ -3,13 +3,13 @@ import Link from "next/link";
 
 export default function Navigation() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F8F5ED]/95 backdrop-blur-sm border-b-2 border-[#2d2d2d]/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F8F5ED]/95 backdrop-blur-sm border-b-2 border-[#B94A48]/50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
           href="/"
           className="flex items-center gap-3 hover:opacity-80 transition-opacity"
         >
-          <div className="w-12 h-12 rounded-full border-2 border-[#2d2d2d] overflow-hidden bg-gray-200">
+          <div className="w-12 h-12 rounded-full border-2 border-[#B94A48]  overflow-hidden bg-gray-200">
             {/* Aquí puedes poner tu foto de perfil */}
             <Image src="/images/yo.png" alt="Profile" width={48} height={48} />
           </div>

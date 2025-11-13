@@ -42,6 +42,19 @@ export default function Hero() {
 
           {/* Información básica debajo del hero */}
           <div className="mt-12 text-center max-w-3xl mx-auto bg-white/90 backdrop-blur-sm p-8 rounded-lg">
+            {/* Foto de perfil */}
+            <div className="flex justify-center mb-6">
+              <div className="relative w-32 h-32 rounded-full border-4 border-[#B94A48] overflow-hidden shadow-lg">
+                <Image
+                  src="/images/yo.png"
+                  alt="Foto de perfil"
+                  fill
+                  className="object-cover"
+                  sizes="128px"
+                />
+              </div>
+            </div>
+            
             <h2 className="text-3xl font-bold text-[#2d2d2d] mb-4">
               Hola, soy <span className="text-[#B94A48]">tu nombre</span>
             </h2>
