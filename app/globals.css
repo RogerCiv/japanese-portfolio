@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F8F5ED;
+  --foreground: #2d2d2d;
+  --accent: #B94A48;
+  --dark-gray: #4a4a4a;
+  --light-gray: #6b6b6b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-accent: var(--accent);
+  --font-sans: var(--font-noto-sans);
+  --font-serif: var(--font-noto-serif);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto-sans), sans-serif;
+}
+
+/* Estilos personalizados japoneses */
+.text-japanese {
+  font-family: var(--font-noto-serif), serif;
+  letter-spacing: 0.05em;
+}
+
+.border-japanese {
+  border: 4px solid #2d2d2d;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.btn-accent:hover {
+  background-color: #a03d3b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(185, 74, 72, 0.3);
 }
