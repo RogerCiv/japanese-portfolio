@@ -26,6 +26,7 @@ body {
 .text-japanese {
   font-family: var(--font-noto-serif), serif;
   letter-spacing: 0.05em;
+  color: var(--background);
 }
 
 .border-japanese {
