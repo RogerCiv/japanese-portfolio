@@ -2,7 +2,7 @@ import Image from "next/image";
 import ProfileImage from "./Shared/ProfileImage";
 
 export default function Hero() {
-
+  // comentario lazyvim
   return (
     <section
       id="home"
