@@ -1,9 +1,8 @@
-"use client";
-
 import Image from "next/image";
 import ProfileImage from "./Shared/ProfileImage";
 
 export default function Hero() {
+
   return (
     <section
       id="home"
