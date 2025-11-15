@@ -1,6 +1,19 @@
 import Image from "next/image";
 
 export default function Footer() {
+  const socialLinks = [{
+    href: "https://www.linkedin.com/",
+    alt: "LinkedIn",
+    src: "/images/footer/linkedin-icon.png",
+  }, {
+    href: "https://instagram.com",
+    alt: "Instagram",
+    src: "/images/footer/instagram-icon.png",
+  }, {
+    href: "https://github.com",
+    alt: "GitHub",
+    src: "/images/footer/github-icon.png",
+  }];
   return (
     <footer className="border-t-2 border-[#2d2d2d]/10 py-12 px-6">
       <div className="max-w-6xl mx-auto">
@@ -8,53 +21,24 @@ export default function Footer() {
           <div className="text-[#6b6b6b]">© 2024 JPN WEB DESIGN</div>
 
           <div className="flex items-center gap-0">
-            {/* Twitter */}
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-105 hover:duration-300 transition-transform"
-              aria-label="Twitter"
-            >
-              <Image
-                src="/images/footer/linkedin-icon.png"
-                alt="Instagram"
-                width={64}
-                height={64}
-              />
-            </a>
+            {socialLinks.map(({ href, alt, src }) => (
+              <a
+                key={alt}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-105 hover:duration-300 transition-transform"
+                aria-label={alt}
+              >
+                <Image
+                  src={src}
+                  alt={alt}
+                  width={64}
+                  height={64}
+                />
+              </a>
+            ))}
 
-            {/* Instagram */}
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-105 hover:duration-300 transition-transform"
-              aria-label="Instagram"
-            >
-              <Image
-                src="/images/footer/instagram-icon.png"
-                alt="Instagram"
-                width={64}
-                height={64}
-              />
-            </a>
-
-            {/* GitHub */}
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-105 hover:duration-300 transition-transform"
-              aria-label="GitHub"
-            >
-              <Image
-                src="/images/footer/github-icon.png"
-                alt="Instagram"
-                width={64}
-                height={64}
-              />
-            </a>
           </div>
         </div>
 
