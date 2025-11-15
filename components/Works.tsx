@@ -1,5 +1,5 @@
 'use client';
-
+//  TODO: Update project data to real projects
 const projects = [
   {
     title: "Diversia Interiorismo",
@@ -38,7 +38,7 @@ export default function Works() {
         <h2 className="text-5xl font-bold text-foreground mb-16 font-serif">
           WORKS
         </h2>
-
+        {/* ##TODO: Update UIe */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, key) => (
             <article
