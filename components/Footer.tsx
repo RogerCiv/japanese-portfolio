@@ -1,19 +1,25 @@
 import Image from "next/image";
 
+interface Links {
+  href: string;
+  alt: string;
+  src: string;
+}
+const socialLinks: Links[] = [{
+  href: "https://www.linkedin.com/",
+  alt: "LinkedIn",
+  src: "/images/footer/linkedin-icon.png",
+}, {
+  href: "https://instagram.com",
+  alt: "Instagram",
+  src: "/images/footer/instagram-icon.png",
+}, {
+  href: "https://github.com",
+  alt: "GitHub",
+  src: "/images/footer/github-icon.png",
+}];
 export default function Footer() {
-  const socialLinks = [{
-    href: "https://www.linkedin.com/",
-    alt: "LinkedIn",
-    src: "/images/footer/linkedin-icon.png",
-  }, {
-    href: "https://instagram.com",
-    alt: "Instagram",
-    src: "/images/footer/instagram-icon.png",
-  }, {
-    href: "https://github.com",
-    alt: "GitHub",
-    src: "/images/footer/github-icon.png",
-  }];
+
   return (
     <footer className="border-t-2 border-[#2d2d2d]/10 py-12 px-6">
       <div className="max-w-6xl mx-auto">
