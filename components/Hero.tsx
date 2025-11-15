@@ -30,7 +30,7 @@ export default function Hero() {
               <h1 className="text-japanese text-4xl md:text-5xl font-bold mb-2">
                 美は、シンプルさの中に。
               </h1>
-              <p className="text-lg md:text-xl text-black/80 tracking-wider">
+              <p className="text-lg md:text-3xl text-black/80 tracking-wider font-serif font-bold">
                 La belleza está en la simplicidad
               </p>
             </div>
