@@ -1,7 +1,7 @@
 import { MailIcon } from "lucide-react";
 import Image from "next/image";
-import ProfileImage from "./Shared/ProfileImage";
 import { socialLinks } from "@/data/socials";
+import ProfileImage from "./Shared/ProfileImage";
 
 export default function Contact() {
   return (

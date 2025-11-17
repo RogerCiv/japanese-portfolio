@@ -1,5 +1,5 @@
-import { educations, experiences } from "@/data/experience";
 import { Briefcase, Calendar, GraduationCap } from "lucide-react";
+import { educations, experiences } from "@/data/experience";
 
 export function Experience() {
   return (

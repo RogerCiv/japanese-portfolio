@@ -6,7 +6,6 @@ export interface Education {
   description: string;
 }
 
-
 export interface Experience {
   position: string;
   japanese: string;

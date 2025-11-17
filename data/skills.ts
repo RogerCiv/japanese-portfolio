@@ -8,8 +8,6 @@ import {
 } from "lucide-react";
 import type { Skill } from "@/types/skill";
 
-
-
 export const skills: Skill[] = [
   {
     icon: CodeXml,
@@ -48,5 +46,3 @@ export const skills: Skill[] = [
     techs: ["React Native", "PWA", "Responsive", "Touch UI"],
   },
 ];
-
-

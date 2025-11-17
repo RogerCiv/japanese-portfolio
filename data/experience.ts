@@ -53,5 +53,3 @@ export const experiences: Experience[] = [
     achievements: ["A11y compliance", "Performance +50%", "Mobile First"],
   },
 ];
-
-
