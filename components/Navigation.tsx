@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import ProfileImage from "./Shared/ProfileImage";
 import { useEffect, useState } from "react";
+import ProfileImage from "./Shared/ProfileImage";
 
 interface NavItem {
   href: string;
