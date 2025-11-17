@@ -35,15 +35,24 @@ export default function Navigation() {
         document.querySelector(item.href)
       ).filter(Boolean);
 
+      // Detectar si estamos en el final de la página
+      const isAtBottom = 
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+
+      // Si estamos al final, marcar como activo contact
+      if (isAtBottom) {
+        setActiveHash(prev => prev !== "#contact" ? "#contact" : prev);
+        return;
+      }
+
       let currentSection = "#hero";
       
       for (const section of sections) {
         if (section) {
           const rect = section.getBoundingClientRect();
           // Si la sección está en el viewport (con un offset para la navbar)
-          if (rect.top <= 100 && rect.bottom >= 100) {
+          if (rect.top <= 150 && rect.bottom >= 150) {
             currentSection = `#${section.id}`;
-            break;
           }
         }
       }
@@ -62,7 +71,7 @@ export default function Navigation() {
       window.removeEventListener("hashchange", handleHashChange);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []); // Sin dependencias
+  }, []);
 
   const isActive = (href: string) => {
     return activeHash === href;
