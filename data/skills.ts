@@ -1,4 +1,3 @@
-import { Skill } from "@/types/skill";
 import {
   CodeXml,
   Database,
@@ -7,6 +6,7 @@ import {
   Server,
   Smartphone,
 } from "lucide-react";
+import type { Skill } from "@/types/skill";
 
 
 

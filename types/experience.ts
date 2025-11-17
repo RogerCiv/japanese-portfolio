@@ -1,4 +1,4 @@
-export interface education {
+export interface Education {
   degree: string;
   japanese: string;
   institution: string;
@@ -7,7 +7,7 @@ export interface education {
 }
 
 
-export interface experience {
+export interface Experience {
   position: string;
   japanese: string;
   company: string;

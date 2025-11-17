@@ -1,6 +1,6 @@
-import { education, experience } from "@/types/experience";
+import type { Education, Experience } from "@/types/experience";
 
-export const educations: education[] = [
+export const educations: Education[] = [
   {
     degree: "Grado en Ingeniería Informática",
     japanese: "情報工学",
@@ -24,7 +24,7 @@ export const educations: education[] = [
   },
 ];
 
-export const experiences: experience[] = [
+export const experiences: Experience[] = [
   {
     position: "Senior Full Stack Developer",
     japanese: "シニア開発者",
