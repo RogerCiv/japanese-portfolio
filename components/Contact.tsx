@@ -1,33 +1,26 @@
-
-import { MailIcon, GithubIcon, LinkedinIcon, TwitterIcon } from 'lucide-react'
+import { MailIcon } from 'lucide-react'
 import ProfileImage from './Shared/ProfileImage'
+import Image from 'next/image'
+
 export default function Contact() {
   const socialLinks = [
     {
-      icon: GithubIcon,
+      image: '/images/socials/github-icon.png', // o .svg
       label: 'GitHub',
       href: 'https://github.com/tuusuario',
-      color: 'hover:text-foreground',
     },
     {
-      icon: LinkedinIcon,
+      image: '/images/socials/linkedin-icon.png',
       label: 'LinkedIn',
       href: 'https://linkedin.com/in/tuusuario',
-      color: 'hover:text-blue-600',
     },
     {
-      icon: TwitterIcon,
+      image: '/images/socials/instagram-icon.png',
       label: 'Twitter',
       href: 'https://twitter.com/tuusuario',
-      color: 'hover:text-blue-400',
-    },
-    {
-      icon: MailIcon,
-      label: 'Email',
-      href: 'mailto:tu@email.com',
-      color: 'hover:text-primary',
     },
   ]
+  
   return (
     <section
       id="contact"
@@ -36,10 +29,18 @@ export default function Contact() {
       <div className="pattern-bg-hishi"></div>
 
       <div className="max-w-4xl mx-auto relative z-10 text-center">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
-          Contacto
-        </h2>
-        <p className="text-japanese text-xl text-primary mb-8">お問い合わせ</p>
+        {/* Header japonés */}
+        <div className="text-center mb-16">
+          <p className="text-japanese text-xl text-primary/60 mb-2">連絡先</p>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
+            Contacto
+          </h2>
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <div className="w-16 h-px bg-primary"></div>
+            <div className="w-2 h-2 bg-primary rounded-full"></div>
+            <div className="w-16 h-px bg-primary"></div>
+          </div>
+        </div>
 
         <p className="text-lg text-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed">
           ¿Tienes un proyecto en mente o simplemente quieres charlar sobre
@@ -47,12 +48,12 @@ export default function Contact() {
           nuevas oportunidades y colaboraciones.
         </p>
 
-        {/* Imagen GitHub */}
+        {/* Imagen de perfil */}
         <div className="mb-12 flex justify-center">
           <div className="relative inline-block">
-          <ProfileImage size='medium' />
+            <ProfileImage size='medium' />
             <div
-              className="red-circle absolute -top-4 -right-4 opacity-30"
+              className="red-circle absolute -top-4 -right-4 opacity-30 animate-pulse"
               style={{
                 width: '60px',
                 height: '60px',
@@ -61,40 +62,71 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Social Links */}
-        <div className="flex flex-wrap justify-center gap-6 mb-12">
-          {socialLinks.map((link) => {
-            const Icon = link.icon
-            return (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex flex-col items-center gap-2 text-foreground/70 transition-all duration-300 ${link.color} group`}
-              >
-                <div className="w-16 h-16 border-2 border-foreground/20 rounded-full flex items-center justify-center group-hover:border-current group-hover:scale-110 transition-all duration-300">
-                  <Icon className="w-7 h-7" />
+        {/* Social Links con imágenes japonesas */}
+        <div className="flex flex-wrap justify-center gap-8 mb-12">
+          {socialLinks.map((link, index) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-3 transition-all duration-300 hover:-translate-y-2"
+            >
+              {/* Contenedor de imagen con borde japonés */}
+              <div className="relative w-20 h-20 border-2 border-foreground/20 group-hover:border-primary transition-all duration-300">
+                {/* Decoración esquinas */}
+                <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                
+                {/* Imagen del logo */}
+                <div className="relative w-full h-full p-3 bg-background/50 group-hover:bg-background transition-colors">
+                  <Image
+                    src={link.image}
+                    alt={link.label}
+                    fill
+                    className="object-contain p-2 grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
                 </div>
-                <span className="text-sm font-medium">{link.label}</span>
-              </a>
-            )
-          })}
+
+                {/* Número japonés */}
+                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-primary text-white text-xs flex items-center justify-center font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+              </div>
+
+              {/* Label */}
+              <span className="text-sm font-medium text-foreground/70 group-hover:text-primary transition-colors">
+                {link.label}
+              </span>
+            </a>
+          ))}
         </div>
 
-        {/* CTA */}
-        <a href="mailto:tu@email.com" className="btn-accent inline-block">
-          Enviar Mensaje
-        </a>
+        {/* CTA mejorado */}
+        <div className="relative inline-block">
+          <a href="mailto:tu@email.com" className="btn-accent inline-block group">
+            <span className="flex items-center gap-2">
+              <MailIcon className="w-5 h-5" />
+              Enviar Mensaje
+            </span>
+          </a>
+        </div>
       </div>
 
       {/* Footer */}
       <div className="max-w-6xl mx-auto mt-20 pt-8 border-t border-foreground/20 text-center">
+        <div className="flex items-center justify-center gap-4 mb-4">
+          <div className="w-12 h-px bg-foreground/20"></div>
+          <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+          <div className="w-12 h-px bg-foreground/20"></div>
+        </div>
         <p className="text-japanese text-sm text-foreground/60 mb-2">
           心を込めて作られました
         </p>
         <p className="text-foreground/60 text-sm">
-          © 2025 Tu Nombre. Todos los derechos reservados.
+          © 2025 Roger Civ. Todos los derechos reservados.
         </p>
       </div>
     </section>
