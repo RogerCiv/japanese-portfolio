@@ -1,45 +1,52 @@
-import { CodeXml, Database, GitBranch, Layout, Server, Smartphone } from 'lucide-react'
+import {
+  CodeXml,
+  Database,
+  GitBranch,
+  Layout,
+  Server,
+  Smartphone,
+} from "lucide-react";
 
 export function Skills() {
   const skills = [
     {
       icon: CodeXml,
-      title: 'Frontend',
-      japanese: 'フロントエンド',
-      techs: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js'],
+      title: "Frontend",
+      japanese: "フロントエンド",
+      techs: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
     },
     {
       icon: Server,
-      title: 'Backend',
-      japanese: 'バックエンド',
-      techs: ['Node.js', 'Express', 'Python', 'REST APIs'],
+      title: "Backend",
+      japanese: "バックエンド",
+      techs: ["Node.js", "Express", "Python", "REST APIs"],
     },
     {
       icon: Database,
-      title: 'Database',
-      japanese: 'データベース',
-      techs: ['PostgreSQL', 'MongoDB', 'Redis', 'Prisma'],
+      title: "Database",
+      japanese: "データベース",
+      techs: ["PostgreSQL", "MongoDB", "Redis", "Prisma"],
     },
     {
       icon: Layout,
-      title: 'UI/UX',
-      japanese: 'デザイン',
-      techs: ['Figma', 'Responsive', 'A11y', 'Animation'],
+      title: "UI/UX",
+      japanese: "デザイン",
+      techs: ["Figma", "Responsive", "A11y", "Animation"],
     },
     {
       icon: GitBranch,
-      title: 'DevOps',
-      japanese: 'デブオプス',
-      techs: ['Git', 'Docker', 'CI/CD', 'AWS'],
+      title: "DevOps",
+      japanese: "デブオプス",
+      techs: ["Git", "Docker", "CI/CD", "AWS"],
     },
     {
       icon: Smartphone,
-      title: 'Mobile',
-      japanese: 'モバイル',
-      techs: ['React Native', 'PWA', 'Responsive', 'Touch UI'],
+      title: "Mobile",
+      japanese: "モバイル",
+      techs: ["React Native", "PWA", "Responsive", "Touch UI"],
     },
-  ]
-  
+  ];
+
   return (
     <section
       id="skills"
@@ -63,7 +70,7 @@ export function Skills() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {skills.map((skill, index) => {
-            const Icon = skill.icon
+            const Icon = skill.icon;
             return (
               <div
                 key={skill.title}
@@ -72,7 +79,7 @@ export function Skills() {
               >
                 {/* Decoración japonesa superior */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                
+
                 {/* Número en esquina */}
                 <div className="absolute top-4 right-4 text-6xl font-bold text-primary/5 group-hover:text-primary/10 transition-colors">
                   0{index + 1}
@@ -84,7 +91,7 @@ export function Skills() {
                     <div className="w-14 h-14 mb-4 flex items-center justify-center border-2 border-primary/20 group-hover:border-primary/50 transition-colors">
                       <Icon className="w-7 h-7 text-primary" />
                     </div>
-                    
+
                     <h3 className="text-2xl font-bold text-foreground mb-1">
                       {skill.title}
                     </h3>
@@ -118,10 +125,10 @@ export function Skills() {
                 <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-foreground/10 to-transparent"></div>
                 <div className="absolute bottom-0 left-4 w-8 h-8 border-l-2 border-b-2 border-primary/20 group-hover:border-primary/50 transition-colors"></div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }

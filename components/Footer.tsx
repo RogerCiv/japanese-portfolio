@@ -5,21 +5,24 @@ interface Links {
   alt: string;
   src: string;
 }
-const socialLinks: Links[] = [{
-  href: "https://www.linkedin.com/",
-  alt: "LinkedIn",
-  src: "/images/footer/linkedin-icon.png",
-}, {
-  href: "https://instagram.com",
-  alt: "Instagram",
-  src: "/images/footer/instagram-icon.png",
-}, {
-  href: "https://github.com",
-  alt: "GitHub",
-  src: "/images/footer/github-icon.png",
-}];
+const socialLinks: Links[] = [
+  {
+    href: "https://www.linkedin.com/",
+    alt: "LinkedIn",
+    src: "/images/footer/linkedin-icon.png",
+  },
+  {
+    href: "https://instagram.com",
+    alt: "Instagram",
+    src: "/images/footer/instagram-icon.png",
+  },
+  {
+    href: "https://github.com",
+    alt: "GitHub",
+    src: "/images/footer/github-icon.png",
+  },
+];
 export default function Footer() {
-
   return (
     <footer className="border-t-2 border-[#2d2d2d]/10 py-12 px-6">
       <div className="max-w-6xl mx-auto">
@@ -36,15 +39,9 @@ export default function Footer() {
                 className="hover:scale-105 hover:duration-300 transition-transform"
                 aria-label={alt}
               >
-                <Image
-                  src={src}
-                  alt={alt}
-                  width={64}
-                  height={64}
-                />
+                <Image src={src} alt={alt} width={64} height={64} />
               </a>
             ))}
-
           </div>
         </div>
 

@@ -1,26 +1,26 @@
-import { MailIcon } from 'lucide-react'
-import Image from 'next/image'
-import ProfileImage from './Shared/ProfileImage'
+import { MailIcon } from "lucide-react";
+import Image from "next/image";
+import ProfileImage from "./Shared/ProfileImage";
 
 export default function Contact() {
   const socialLinks = [
     {
-      image: '/images/socials/github-icon.avif', // o .svg
-      label: 'GitHub',
-      href: 'https://github.com/tuusuario',
+      image: "/images/socials/github-icon.avif", // o .svg
+      label: "GitHub",
+      href: "https://github.com/tuusuario",
     },
     {
-      image: '/images/socials/linkedin-icon.avif',
-      label: 'LinkedIn',
-      href: 'https://linkedin.com/in/tuusuario',
+      image: "/images/socials/linkedin-icon.avif",
+      label: "LinkedIn",
+      href: "https://linkedin.com/in/tuusuario",
     },
     {
-      image: '/images/socials/instagram-icon.avif',
-      label: 'Twitter',
-      href: 'https://twitter.com/tuusuario',
+      image: "/images/socials/instagram-icon.avif",
+      label: "Twitter",
+      href: "https://twitter.com/tuusuario",
     },
-  ]
-  
+  ];
+
   return (
     <section
       id="contact"
@@ -51,12 +51,12 @@ export default function Contact() {
         {/* Imagen de perfil */}
         <div className="mb-12 flex justify-center">
           <div className="relative inline-block">
-            <ProfileImage size='medium' />
+            <ProfileImage size="medium" />
             <div
               className="red-circle absolute -top-4 -right-4 opacity-30 animate-pulse"
               style={{
-                width: '60px',
-                height: '60px',
+                width: "60px",
+                height: "60px",
               }}
             ></div>
           </div>
@@ -79,7 +79,7 @@ export default function Contact() {
                 <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                
+
                 {/* Imagen del logo */}
                 <div className="relative w-full h-full p-3 bg-background/50 group-hover:bg-background transition-colors">
                   <Image
@@ -92,7 +92,7 @@ export default function Contact() {
 
                 {/* Número japonés */}
                 <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-primary text-white text-xs flex items-center justify-center font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                  {String(index + 1).padStart(2, '0')}
+                  {String(index + 1).padStart(2, "0")}
                 </div>
               </div>
 
@@ -106,7 +106,10 @@ export default function Contact() {
 
         {/* CTA mejorado */}
         <div className="relative inline-block">
-          <a href="mailto:tu@email.com" className="btn-accent inline-block group">
+          <a
+            href="mailto:tu@email.com"
+            className="btn-accent inline-block group"
+          >
             <span className="flex items-center gap-2">
               <MailIcon className="w-5 h-5" />
               Enviar Mensaje
@@ -130,5 +133,5 @@ export default function Contact() {
         </p>
       </div>
     </section>
-  )
+  );
 }

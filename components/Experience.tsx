@@ -1,4 +1,4 @@
-import { GraduationCap, Briefcase, Calendar } from "lucide-react";
+import { Briefcase, Calendar, GraduationCap } from "lucide-react";
 
 export function Experience() {
   const education = [

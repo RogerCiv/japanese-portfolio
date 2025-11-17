@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
 import Contact from "@/components/Contact";
+import Navigation from "@/components/Navigation";
 
 const notoSans = Noto_Sans_JP({
   variable: "--font-noto-sans",

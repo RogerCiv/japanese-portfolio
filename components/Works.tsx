@@ -1,66 +1,74 @@
-
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github } from "lucide-react";
 
 export function Works() {
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      japanese: 'Eコマース',
-      description: 'Plataforma completa con carrito, pagos y panel admin',
-      image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop',
-      tags: ['React', 'Node.js', 'MongoDB'],
-      github: '#',
-      demo: '#',
+      title: "E-Commerce Platform",
+      japanese: "Eコマース",
+      description: "Plataforma completa con carrito, pagos y panel admin",
+      image:
+        "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop",
+      tags: ["React", "Node.js", "MongoDB"],
+      github: "#",
+      demo: "#",
     },
     {
-      title: 'Task Manager',
-      japanese: 'タスク管理',
-      description: 'Gestión de tareas con drag & drop y tiempo real',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop',
-      tags: ['TypeScript', 'React', 'Firebase'],
-      github: '#',
-      demo: '#',
+      title: "Task Manager",
+      japanese: "タスク管理",
+      description: "Gestión de tareas con drag & drop y tiempo real",
+      image:
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
+      tags: ["TypeScript", "React", "Firebase"],
+      github: "#",
+      demo: "#",
     },
     {
-      title: 'Weather Dashboard',
-      japanese: '天気ダッシュボード ',
-      description: 'Dashboard con pronósticos y mapas interactivos',
-      image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=500&fit=crop',
-      tags: ['Next.js', 'API', 'Charts'],
-      github: '#',
-      demo: '#',
+      title: "Weather Dashboard",
+      japanese: "天気ダッシュボード ",
+      description: "Dashboard con pronósticos y mapas interactivos",
+      image:
+        "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=500&fit=crop",
+      tags: ["Next.js", "API", "Charts"],
+      github: "#",
+      demo: "#",
     },
     {
-      title: 'Portfolio Site',
-      japanese: 'ポートフォリオサイト',
-      description: 'Sitio personal con animaciones y secciones responsivas',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=500&fit=crop',
-      tags: ['Next.js', 'Tailwind', 'TypeScript'],
-      github: '#',
-      demo: '#',
+      title: "Portfolio Site",
+      japanese: "ポートフォリオサイト",
+      description: "Sitio personal con animaciones y secciones responsivas",
+      image:
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=500&fit=crop",
+      tags: ["Next.js", "Tailwind", "TypeScript"],
+      github: "#",
+      demo: "#",
     },
     {
-      title: 'Chat App',
-      japanese: 'チャットアプリ',
-      description: 'Aplicación de mensajería en tiempo real con rooms y emojis',
-      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop',
-      tags: ['React', 'Socket.io', 'Express'],
-      github: '#',
-      demo: '#',
+      title: "Chat App",
+      japanese: "チャットアプリ",
+      description: "Aplicación de mensajería en tiempo real con rooms y emojis",
+      image:
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop",
+      tags: ["React", "Socket.io", "Express"],
+      github: "#",
+      demo: "#",
     },
     {
-      title: 'Fitness Tracker',
-      japanese: 'フィットネストラッカー',
-      description: 'Registro de entrenamientos y progreso con gráficos',
-      image: 'https://images.unsplash.com/photo-1554284126-2d9f0b8f6b61?w=800&h=500&fit=crop',
-      tags: ['React Native', 'Redux', 'Charts'],
-      github: '#',
-      demo: '#',
-    }
-  ]
-  
+      title: "Fitness Tracker",
+      japanese: "フィットネストラッカー",
+      description: "Registro de entrenamientos y progreso con gráficos",
+      image:
+        "https://images.unsplash.com/photo-1554284126-2d9f0b8f6b61?w=800&h=500&fit=crop",
+      tags: ["React Native", "Redux", "Charts"],
+      github: "#",
+      demo: "#",
+    },
+  ];
+
   return (
-    <section id="projects" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-background min-h-dvh">
+    <section
+      id="projects"
+      className="relative py-32 px-4 sm:px-6 lg:px-8 bg-background min-h-dvh"
+    >
       <div className="pattern-bg-uroko"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -85,7 +93,7 @@ export function Works() {
             >
               {/* Número japonés */}
               <div className="absolute top-4 left-4 z-20 bg-primary text-white w-10 h-10 flex items-center justify-center font-bold text-lg">
-                {String(index + 1).padStart(2, '0')}
+                {String(index + 1).padStart(2, "0")}
               </div>
 
               {/* Imagen */}
@@ -96,7 +104,7 @@ export function Works() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent"></div>
-                
+
                 {/* Links */}
                 <div className="absolute bottom-4 left-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <a
@@ -158,5 +166,5 @@ export function Works() {
         </div>
       </div>
     </section>
-  )
+  );
 }

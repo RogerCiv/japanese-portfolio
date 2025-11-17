@@ -9,9 +9,7 @@ export default function About() {
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
             Sobre Mí
           </h2>
-          <p className="text-japanese text-xl text-primary mb-4">
-            私について
-          </p>
+          <p className="text-japanese text-xl text-primary mb-4">私について</p>
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
 
@@ -27,7 +25,10 @@ export default function About() {
               />
             </div>
             {/* Círculo decorativo animado */}
-            <div className="red-circle absolute -bottom-8 -right-8 opacity-20 animate-pulse" style={{ width: "100px", height: "100px" }}></div>
+            <div
+              className="red-circle absolute -bottom-8 -right-8 opacity-20 animate-pulse"
+              style={{ width: "100px", height: "100px" }}
+            ></div>
           </div>
 
           {/* Contenido mejorado */}
@@ -55,10 +56,10 @@ export default function About() {
               </h3>
               <ul className="space-y-4">
                 {[
-                  'Código limpio y mantenible',
-                  'Diseño centrado en el usuario',
-                  'Aprendizaje continuo',
-                  'Atención al detalle'
+                  "Código limpio y mantenible",
+                  "Diseño centrado en el usuario",
+                  "Aprendizaje continuo",
+                  "Atención al detalle",
                 ].map((item) => (
                   <li key={item} className="flex items-center group">
                     <div className="w-2 h-2 bg-primary rounded-full mr-4 group-hover:scale-150 transition-transform"></div>

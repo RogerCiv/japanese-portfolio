@@ -31,22 +31,23 @@ export default function Navigation() {
 
     // Observar scroll para actualizar el hash activo
     const handleScroll = () => {
-      const sections = navItems.map(item => 
-        document.querySelector(item.href)
-      ).filter(Boolean);
+      const sections = navItems
+        .map((item) => document.querySelector(item.href))
+        .filter(Boolean);
 
       // Detectar si estamos en el final de la página
-      const isAtBottom = 
-        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+      const isAtBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 50;
 
       // Si estamos al final, marcar como activo contact
       if (isAtBottom) {
-        setActiveHash(prev => prev !== "#contact" ? "#contact" : prev);
+        setActiveHash((prev) => (prev !== "#contact" ? "#contact" : prev));
         return;
       }
 
       let currentSection = "#hero";
-      
+
       for (const section of sections) {
         if (section) {
           const rect = section.getBoundingClientRect();
@@ -58,12 +59,14 @@ export default function Navigation() {
       }
 
       // Solo actualizar si cambió
-      setActiveHash(prev => prev !== currentSection ? currentSection : prev);
+      setActiveHash((prev) =>
+        prev !== currentSection ? currentSection : prev,
+      );
     };
 
     window.addEventListener("hashchange", handleHashChange);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     // Llamar una vez al montar para establecer la sección inicial
     handleScroll();
 
@@ -160,7 +163,11 @@ export default function Navigation() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+                d={
+                  isMobileMenuOpen
+                    ? "M6 18L18 6M6 6l12 12"
+                    : "M4 6h16M4 12h16M4 18h16"
+                }
               />
             </svg>
           </button>

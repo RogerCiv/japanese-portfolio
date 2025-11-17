@@ -1,8 +1,7 @@
-
-import { Works } from '@/components/Works';
-import { Skills } from '@/components/Skills';
-import { Experience } from '@/components/Experience';
-import Hero from '../components/Hero';
+import { Experience } from "@/components/Experience";
+import { Skills } from "@/components/Skills";
+import { Works } from "@/components/Works";
+import Hero from "../components/Hero";
 
 export default function Home() {
   return (
@@ -14,4 +13,3 @@ export default function Home() {
     </>
   );
 }
-

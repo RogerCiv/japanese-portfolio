@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin, Calendar } from "lucide-react";
+import { Calendar, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {
