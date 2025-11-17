@@ -1,30 +1,189 @@
 @import "tailwindcss";
 
-
 :root {
   --background: hsl(48, 23%, 87%);
   --foreground: hsl(0, 0%, 18%);
   --accent: hsl(2, 47%, 50%);
   --dark-gray: hsl(0, 0%, 29%);
   --light-gray: hsl(0, 0%, 42%);
-  --primary: hsl(346,100%, 37%);
+  --primary: hsl(346, 100%, 37%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-dark-gray: var(--dark-gray);
+  --color-light-gray: var(--light-gray);
+  --color-primary: var(--primary);
+  
   --font-sans: var(--font-noto-sans);
   --font-serif: var(--font-noto-serif);
-  --color-primary: var(--primary);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-noto-sans), sans-serif;
+  background: hsl(48, 23%, 87%);
+  color: hsl(0, 0%, 18%);
+  font-family: 'Noto Sans', sans-serif;
 }
 
+/* Estilos personalizados japoneses */
+.text-japanese {
+  font-family: 'Noto Serif JP', serif;
+  letter-spacing: 0.05em;
+}
+
+.border-japanese {
+  border: 1px solid #2d2d2d;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-accent {
+  background-color: hsl(2, 47%, 50%);
+  color: white;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  border-radius: 0.25rem;
+}
+
+.btn-accent:hover {
+  background-color: #a03d3b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(185, 74, 72, 0.3);
+}
+
+/* Patrón de fondo japonés */
+.pattern-bg {
+  background-image: url('/images/patterns/patron-asanoha.png');
+  background-size: 200px;
+  background-repeat: repeat;
+  opacity: 0.03;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Patrón de ondas (seigaiha) */
+.pattern-bg-waves {
+  background-image: url('/images/patterns/patron-ondas-seigaiha.png');
+  background-size: 150px;
+  background-repeat: repeat;
+  opacity: 0.04;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Patrón de uroko */
+.pattern-bg-uroko {
+  background-image: url('/images/patterns/patron-uroko.png');
+  background-size: 100px;
+  background-repeat: repeat;
+  opacity: 0.05;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Patrón de nubes (kumo) */
+.pattern-bg-kumo {
+  background-image: url('/images/patterns/kumo.png');
+  background-size: 250px;
+  background-repeat: repeat;
+  opacity: 0.06;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Patrón de diamantes (hishi) */
+.pattern-bg-hishi {
+  background-image: url('/images/patterns/hishi.png');
+  background-size: 250px;
+  background-repeat: repeat;
+  opacity: 0.06;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Líneas horizontales estilo retro */
+.retro-lines {
+  position: relative;
+}
+
+.retro-lines::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 45%,
+    currentColor 45%,
+    currentColor 47%,
+    transparent 47%,
+    transparent 53%,
+    currentColor 53%,
+    currentColor 55%,
+    transparent 55%,
+    transparent 100%
+  );
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Círculo rojo japonés */
+.red-circle {
+  width: 120px;
+  height: 120px;
+  background: hsl(346, 100%, 37%);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 0;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
 /* Estilos personalizados japoneses */
 .text-japanese {
   font-family: var(--font-noto-serif), serif;

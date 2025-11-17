@@ -1,103 +1,114 @@
-'use client';
-//  TODO: Update project data to real projects
-const projects = [
-  {
-    title: "Diversia Interiorismo",
-    desc: "Going into this journey, I had a standard therapy regimen, based on looking at the research literature. After I saw the movie, I started to ask other people.",
-    img: "https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    date: "Jan 4 2022",
-    href: "https://www.diversiainteriorismo.com"
-  },
-  {
-    title: "A Quick Guide to WordPress Hosting",
-    desc: "According to him, Im still surprised that this has happened. But we are surprised because we are so surprised.",
-    img: "https://images.unsplash.com/photo-1620287341056-49a2f1ab2fdc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    date: "Jan 4 2022",
-    href: "javascript:void(0)"
-  },
-  {
-    title: "7 Promising VS Code Extensions Introduced in 2022",
-    desc: "I hope I remembered all the stuff that they needed to know. They're like, 'okay,' and write it in their little reading notebooks.",
-    img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    date: "Jan 4 2022",
-    href: "javascript:void(0)"
-  },
-  {
-    title: "How to Use Root C++ Interpreter Shell to Write C++ Programs",
-    desc: "The powerful gravity waves resulting from the impact of the planets' moons — four in total — were finally resolved in 2015 when gravitational.",
-    img: "https://images.unsplash.com/photo-1617529497471-9218633199c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    date: "Jan 4 2022",
-    href: "javascript:void(0)"
-  }
-];
-
-export default function Works() {
+import React from 'react'
+import { ExternalLinkIcon, GithubIcon } from 'lucide-react'
+export function Works() {
+  const projects = [
+    {
+      title: 'E-Commerce Platform',
+      description:
+        'Plataforma de comercio electrónico completa con carrito de compras, pasarela de pagos y panel de administración.',
+      image:
+        'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop',
+      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      github: '#',
+      demo: '#',
+    },
+    {
+      title: 'Task Management App',
+      description:
+        'Aplicación de gestión de tareas con drag & drop, colaboración en tiempo real y notificaciones.',
+      image:
+        'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop',
+      tags: ['TypeScript', 'React', 'Firebase', 'Tailwind'],
+      github: '#',
+      demo: '#',
+    },
+    {
+      title: 'Weather Dashboard',
+      description:
+        'Dashboard meteorológico con visualización de datos, pronósticos y mapas interactivos.',
+      image:
+        'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=500&fit=crop',
+      tags: ['Next.js', 'API Integration', 'Charts', 'Geolocation'],
+      github: '#',
+      demo: '#',
+    },
+  ]
   return (
-    <section id="works" className="py-24 px-6 bg-background">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl font-bold text-foreground mb-16 font-serif">
-          WORKS
+    <section id="projects" className="relative py-20 px-4 sm:px-6 lg:px-8">
+      <div className="pattern-bg-kumo"></div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        <h2 className="text-4xl sm:text-5xl font-bold text-center mb-4 text-foreground">
+          Proyectos
         </h2>
-        {/* ##TODO: Update UIe */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, key) => (
-            <article
-              key={key}
-              className="group cursor-pointer flex flex-col items-center justify-center h-full"
+        <p className="text-japanese text-center text-xl text-primary mb-16">
+          プロジェクト
+        </p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <div
+              key={project.title}
+              className="border-japanese bg-background overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
             >
-              <a href={project.href} rel="noreferrer" target="_blank" className="block">
-                {/* Contenedor con borde japonés */}
-                <div className="border-2 border-foreground bg-white p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                  {/* Imagen del proyecto */}
-                  <div className="relative overflow-hidden mb-4 aspect-video">
-                    <img
-                      src={project.img}
-                      loading="lazy"
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    {/* Decoración japonesa - círculo rojo */}
-                    <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-primary opacity-80" />
-                  </div>
+              {/* Imagen del proyecto */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
 
-                  {/* Contenido */}
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-accent font-medium tracking-wider uppercase">
-                        {project.date}
-                      </span>
-                      {/* Pequeño detalle decorativo */}
-                      <div className="flex gap-1">
-                        <div className="w-1 h-1 rounded-full bg-primary" />
-                        <div className="w-1 h-1 rounded-full bg-primary" />
-                        <div className="w-1 h-1 rounded-full bg-primary" />
-                      </div>
-                    </div>
+              {/* Contenido */}
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  {project.title}
+                </h3>
 
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-200 font-serif line-clamp-2">
-                      {project.title}
-                    </h3>
+                <p className="text-foreground/70 text-sm mb-4 leading-relaxed">
+                  {project.description}
+                </p>
 
-                    <p className="text-sm text-light-gray line-clamp-3 leading-relaxed">
-                      {project.desc}
-                    </p>
-
-                    {/* Línea decorativa inferior */}
-                    <div className="pt-3 border-t-2 border-background">
-                      <span className="text-xs text-dark-gray uppercase tracking-widest">
-                        View Project →
-                      </span>
-                    </div>
-                  </div>
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="px-2 py-1 bg-primary/10 text-primary text-xs rounded"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-              </a>
-            </article>
+
+                {/* Links */}
+                <div className="flex gap-4">
+                  <a
+                    href={project.github}
+                    className="flex items-center text-foreground hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <GithubIcon className="w-5 h-5 mr-1" />
+                    <span className="text-sm font-medium">Código</span>
+                  </a>
+                  <a
+                    href={project.demo}
+                    className="flex items-center text-foreground hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLinkIcon className="w-5 h-5 mr-1" />
+                    <span className="text-sm font-medium">Demo</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }
-
-
-
