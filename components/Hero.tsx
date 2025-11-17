@@ -43,7 +43,7 @@ export default function Hero() {
 
               <div className="absolute inset-0 rounded-lg overflow-hidden border-4 border-foreground shadow-2xl">
                 <Image
-                  src="/images/yo.png"
+                  src="/images/yo.avif"
                   alt="Perfil"
                   fill
                   className="object-cover hover:scale-110 transition-transform duration-500"

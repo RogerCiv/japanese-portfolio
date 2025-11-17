@@ -5,17 +5,17 @@ import ProfileImage from './Shared/ProfileImage'
 export default function Contact() {
   const socialLinks = [
     {
-      image: '/images/socials/github-icon.png', // o .svg
+      image: '/images/socials/github-icon.avif', // o .svg
       label: 'GitHub',
       href: 'https://github.com/tuusuario',
     },
     {
-      image: '/images/socials/linkedin-icon.png',
+      image: '/images/socials/linkedin-icon.avif',
       label: 'LinkedIn',
       href: 'https://linkedin.com/in/tuusuario',
     },
     {
-      image: '/images/socials/instagram-icon.png',
+      image: '/images/socials/instagram-icon.avif',
       label: 'Twitter',
       href: 'https://twitter.com/tuusuario',
     },

@@ -29,7 +29,7 @@ export default function ProfileImage({
       style={{ borderColor, borderStyle: "solid" }}
     >
       <Image
-        src="/images/yo.png"
+        src="/images/yo.avif"
         alt="Foto de perfil"
         fill
         className="object-cover"

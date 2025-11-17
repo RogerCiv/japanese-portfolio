@@ -21,7 +21,7 @@ export default function About() {
             <div className="absolute -inset-4 bg-gradient-accent opacity-20 blur-xl group-hover:opacity-30 transition-opacity"></div>
             <div className="relative border-4 border-foreground/20 rounded-lg overflow-hidden shadow-2xl">
               <img
-                src="/images/home/montefuji.png"
+                src="/images/home/montefuji.avif"
                 alt="Monte Fuji"
                 className="w-full h-auto transform group-hover:scale-105 transition-transform duration-500"
               />
