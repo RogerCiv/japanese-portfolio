@@ -58,7 +58,7 @@ export function Experience() {
   return (
     <section
       id="experience"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 bg-foreground/5"
+      className="relative py-32 px-4 sm:px-6 lg:px-8 bg-foreground/5"
     >
       <div className="pattern-bg-kumo"></div>
 

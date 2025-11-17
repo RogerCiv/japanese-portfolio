@@ -30,10 +30,37 @@ export function Works() {
       github: '#',
       demo: '#',
     },
+    {
+      title: 'Portfolio Site',
+      japanese: 'ポートフォリオサイト',
+      description: 'Sitio personal con animaciones y secciones responsivas',
+      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=500&fit=crop',
+      tags: ['Next.js', 'Tailwind', 'TypeScript'],
+      github: '#',
+      demo: '#',
+    },
+    {
+      title: 'Chat App',
+      japanese: 'チャットアプリ',
+      description: 'Aplicación de mensajería en tiempo real con rooms y emojis',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop',
+      tags: ['React', 'Socket.io', 'Express'],
+      github: '#',
+      demo: '#',
+    },
+    {
+      title: 'Fitness Tracker',
+      japanese: 'フィットネストラッカー',
+      description: 'Registro de entrenamientos y progreso con gráficos',
+      image: 'https://images.unsplash.com/photo-1554284126-2d9f0b8f6b61?w=800&h=500&fit=crop',
+      tags: ['React Native', 'Redux', 'Charts'],
+      github: '#',
+      demo: '#',
+    }
   ]
   
   return (
-    <section id="projects" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-background">
+    <section id="projects" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-background min-h-dvh">
       <div className="pattern-bg-uroko"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">

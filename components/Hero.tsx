@@ -1,21 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import ProfileImage from "./Shared/ProfileImage";
 import { Mail, MapPin, Calendar } from "lucide-react";
 
 export default function Hero() {
-  const philosophies = [
-    { icon: "🎨", text: "Código limpio y mantenible" },
-    { icon: "👤", text: "Diseño centrado en el usuario" },
-    { icon: "📚", text: "Aprendizaje continuo" },
-    { icon: "✨", text: "Atención al detalle" },
-  ];
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      className="relative min-h-dvh flex items-center justify-center overflow-hidden pt-16"
     >
       <div className="pattern-bg"></div>
 
@@ -34,14 +26,22 @@ export default function Hero() {
 
         {/* Grid principal */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          {/* Imagen de perfil con marco japonés */}
+          {/* Imagen de perfil con marco japonés personalizado */}
           <div className="relative inline-block mx-auto">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-              {/* Marcos decorativos */}
-              <div className="absolute -inset-4 border-4 border-primary/20 rounded-lg"></div>
-              <div className="absolute -inset-2 border-2 border-accent/30"></div>
+            <div className="relative w-64 h-64 sm:w-96 sm:h-96">
+              {/* Marco decorativo japonés */}
+              <div className="absolute inset-0">
+                <Image
+                  src="/images/marco.png"
+                  alt="Marco decorativo"
+                  fill
+                  className="object-contain pointer-events-none"
+                  priority
+                />
+              </div>
 
-              <div className="absolute inset-0 rounded-lg overflow-hidden border-4 border-foreground shadow-2xl">
+              {/* Imagen de perfil */}
+              <div className="absolute inset-8 sm:inset-10 rounded-lg overflow-hidden">
                 <Image
                   src="/images/yo.avif"
                   alt="Perfil"
@@ -51,10 +51,6 @@ export default function Hero() {
                 />
               </div>
             </div>
-
-            {/* Líneas decorativas japonesas */}
-            <div className="absolute -top-6 -right-6 w-24 h-24 border-t-4 border-r-4 border-primary opacity-50"></div>
-            <div className="absolute -bottom-6 -left-6 w-24 h-24 border-b-4 border-l-4 border-primary opacity-50"></div>
           </div>
 
           {/* Contenido principal */}
@@ -116,47 +112,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
-        {/* Filosofía de trabajo - estilo japonés minimalista */}
-        {/* <div className="max-w-4xl mx-auto">
-          <div className="border-t-2 border-foreground/20 pt-12">
-            <h3 className="text-japanese text-2xl text-primary mb-8">
-              私の哲学
-            </h3>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {philosophies.map((item, index) => (
-                <div
-                  key={index}
-                  className="group bg-background/50 backdrop-blur-sm p-6 border border-foreground/10 hover:border-primary/50 transition-all hover:-translate-y-1"
-                >
-                  <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform">
-                    {item.icon}
-                  </div>
-                  <p className="text-sm text-foreground/70 leading-snug">
-                    {item.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div> */}
-
-        {/* Estadísticas */}
-        {/* <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t-2 border-foreground/20">
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">5+</div>
-              <div className="text-sm text-foreground/60 uppercase tracking-wider">Años</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">50+</div>
-              <div className="text-sm text-foreground/60 uppercase tracking-wider">Proyectos</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">30+</div>
-              <div className="text-sm text-foreground/60 uppercase tracking-wider">Clientes</div>
-            </div>
-          </div> */}
-        {/* </div> */}
       </div>
 
       {/* Scroll indicator */}
