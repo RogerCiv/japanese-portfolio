@@ -71,7 +71,7 @@ export function Skills() {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Decoración japonesa superior */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 
                 {/* Número en esquina */}
                 <div className="absolute top-4 right-4 text-6xl font-bold text-primary/5 group-hover:text-primary/10 transition-colors">
@@ -115,7 +115,7 @@ export function Skills() {
                 </div>
 
                 {/* Marco decorativo inferior */}
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-foreground/10 to-transparent"></div>
                 <div className="absolute bottom-0 left-4 w-8 h-8 border-l-2 border-b-2 border-primary/20 group-hover:border-primary/50 transition-colors"></div>
               </div>
             )
