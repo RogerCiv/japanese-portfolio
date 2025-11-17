@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <section id="about" className="relative py-20 px-4 sm:px-6 lg:px-8">
@@ -17,11 +19,13 @@ export default function About() {
           {/* Imagen mejorada con marco */}
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-accent opacity-20 blur-xl group-hover:opacity-30 transition-opacity"></div>
-            <div className="relative border-4 border-foreground/20 rounded-lg overflow-hidden shadow-2xl">
-              <img
+            <div className="relative border-4 border-foreground/20 rounded-lg overflow-hidden shadow-2xl aspect-video">
+              <Image
                 src="/images/home/montefuji.avif"
                 alt="Monte Fuji"
-                className="w-full h-auto transform group-hover:scale-105 transition-transform duration-500"
+                fill
+                className="object-cover transform group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             {/* Círculo decorativo animado */}
