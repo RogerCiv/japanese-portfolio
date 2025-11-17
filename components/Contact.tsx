@@ -1,26 +1,9 @@
 import { MailIcon } from "lucide-react";
 import Image from "next/image";
 import ProfileImage from "./Shared/ProfileImage";
+import { socialLinks } from "@/data/socials";
 
 export default function Contact() {
-  const socialLinks = [
-    {
-      image: "/images/socials/github-icon.avif", // o .svg
-      label: "GitHub",
-      href: "https://github.com/tuusuario",
-    },
-    {
-      image: "/images/socials/linkedin-icon.avif",
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/tuusuario",
-    },
-    {
-      image: "/images/socials/instagram-icon.avif",
-      label: "Twitter",
-      href: "https://twitter.com/tuusuario",
-    },
-  ];
-
   return (
     <section
       id="contact"
