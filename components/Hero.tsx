@@ -32,7 +32,7 @@ export default function Hero() {
               {/* Marco decorativo japonés */}
               <div className="absolute inset-0">
                 <Image
-                  src="/images/marco.png"
+                  src="/images/marco.avif"
                   alt="Marco decorativo"
                   fill
                   className="object-contain pointer-events-none"
