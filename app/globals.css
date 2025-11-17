@@ -181,8 +181,26 @@ html {
   }
 }
 
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Gradiente mejorado */
+.bg-gradient-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
 }
 /* Estilos personalizados japoneses */
 .text-japanese {
