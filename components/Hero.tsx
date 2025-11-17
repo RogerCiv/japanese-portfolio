@@ -21,12 +21,15 @@ export default function Hero() {
 
       {/* Círculos rojos decorativos */}
       <div className="red-circle absolute top-20 right-10 opacity-20 animate-pulse"></div>
-      <div className="red-circle absolute bottom-32 left-20 opacity-10" style={{ width: '80px', height: '80px' }}></div>
+      <div
+        className="red-circle absolute bottom-32 left-20 opacity-10"
+        style={{ width: "80px", height: "80px" }}
+      ></div>
 
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto w-full">
         {/* Título en japonés arriba */}
         <p className="text-japanese text-xl sm:text-2xl text-primary mb-12 opacity-80">
-          美は、シンプルさの中に
+          美は、シンプルさの中に。
         </p>
 
         {/* Grid principal */}
@@ -37,7 +40,7 @@ export default function Hero() {
               {/* Marcos decorativos */}
               <div className="absolute -inset-4 border-4 border-primary/20 rounded-lg"></div>
               <div className="absolute -inset-2 border-2 border-accent/30"></div>
-              
+
               <div className="absolute inset-0 rounded-lg overflow-hidden border-4 border-foreground shadow-2xl">
                 <Image
                   src="/images/yo.png"
@@ -60,7 +63,7 @@ export default function Hero() {
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground leading-tight mb-4">
                 Roger Civ
               </h1>
-              
+
               <p className="text-japanese text-2xl sm:text-3xl text-primary mb-2">
                 ウェブ開発者
               </p>
@@ -91,15 +94,15 @@ export default function Hero() {
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
                 Creando experiencias digitales únicas con código limpio y diseño
                 minimalista inspirado en la filosofía japonesa del{" "}
-                <span className="text-primary font-semibold">wabi-sabi</span>: 
+                <span className="text-primary font-semibold">wabi-sabi</span>:
                 belleza en la simplicidad.
               </p>
             </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <a 
-                href="#projects" 
+              <a
+                href="#projects"
                 className="btn-accent inline-block text-center group relative overflow-hidden"
               >
                 <span className="relative z-10">Ver Proyectos</span>
@@ -138,8 +141,8 @@ export default function Hero() {
             </div>
           </div> */}
 
-          {/* Estadísticas */}
-          {/* <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t-2 border-foreground/20">
+        {/* Estadísticas */}
+        {/* <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t-2 border-foreground/20">
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">5+</div>
               <div className="text-sm text-foreground/60 uppercase tracking-wider">Años</div>
@@ -158,7 +161,9 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="text-xs text-foreground/60 uppercase tracking-wider">Scroll</span>
+        <span className="text-xs text-foreground/60 uppercase tracking-wider">
+          Scroll
+        </span>
         <svg
           className="w-6 h-6 text-primary"
           fill="none"

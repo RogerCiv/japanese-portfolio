@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import ProfileImage from "./Shared/ProfileImage";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface NavItem {
@@ -10,44 +9,73 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { href: "/", label: "HOME" },
-  { href: "#about", label: "ABOUT" },
-  { href: "#works", label: "WORKS" },
+  { href: "#hero", label: "HOME" },
+  { href: "#projects", label: "PROJECTS" },
+  { href: "#skills", label: "SKILLS" },
+  { href: "#experience", label: "EXPERIENCE" },
   { href: "#contact", label: "CONTACT" },
-  { href: "/blog", label: "BLOG" },
 ];
 
 export default function Navigation() {
-  const pathname = usePathname();
   const [activeHash, setActiveHash] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    setActiveHash(window.location.hash);
+    // Establecer hash inicial
+    const hash = window.location.hash || "#hero";
+    setActiveHash(hash);
 
     const handleHashChange = () => {
-      setActiveHash(window.location.hash);
+      setActiveHash(window.location.hash || "#hero");
+    };
+
+    // Observar scroll para actualizar el hash activo
+    const handleScroll = () => {
+      const sections = navItems.map(item => 
+        document.querySelector(item.href)
+      ).filter(Boolean);
+
+      let currentSection = "#hero";
+      
+      for (const section of sections) {
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          // Si la sección está en el viewport (con un offset para la navbar)
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            currentSection = `#${section.id}`;
+            break;
+          }
+        }
+      }
+
+      // Solo actualizar si cambió
+      setActiveHash(prev => prev !== currentSection ? currentSection : prev);
     };
 
     window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    // Llamar una vez al montar para establecer la sección inicial
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Sin dependencias
 
   const isActive = (href: string) => {
-    if (href.startsWith("#")) {
-      return pathname === "/" && activeHash === href;
-    }
-    return pathname === href;
+    return activeHash === href;
   };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-accent/50">
-       <div className="pattern-bg"></div>
+      <div className="pattern-bg"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Profile */}
           <Link
-            href="/"
+            href="/#hero"
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
             <ProfileImage size="small" />
@@ -63,6 +91,15 @@ export default function Navigation() {
                 key={item.href}
                 href={item.href}
                 className="relative inline-block group"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector(item.href);
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth" });
+                    window.history.pushState(null, "", item.href);
+                    setActiveHash(item.href);
+                  }
+                }}
               >
                 <span
                   className={`text-sm font-medium hover:text-accent transition-colors duration-300 ${
@@ -98,7 +135,7 @@ export default function Navigation() {
 
           {/* Mobile menu button */}
           <button
-          type="button"
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-foreground hover:text-accent transition-colors"
             aria-label="Toggle menu"
@@ -128,7 +165,16 @@ export default function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(item.href);
+                    if (target) {
+                      target.scrollIntoView({ behavior: "smooth" });
+                      window.history.pushState(null, "", item.href);
+                      setActiveHash(item.href);
+                      setIsMobileMenuOpen(false);
+                    }
+                  }}
                   className={`text-sm font-medium hover:text-accent transition-colors duration-300 py-2 ${
                     isActive(item.href) ? "text-accent" : "text-foreground"
                   }`}

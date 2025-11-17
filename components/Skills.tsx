@@ -50,7 +50,7 @@ export function Skills() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header japonés */}
         <div className="text-center mb-16">
-          <p className="text-japanese text-xl text-primary/60 mb-2">技術</p>
+          <p className="text-japanese text-xl text-primary/60 mb-2">技術 </p>
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
             Habilidades
           </h2>

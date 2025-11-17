@@ -23,7 +23,7 @@ export function Works() {
     },
     {
       title: 'Weather Dashboard',
-      japanese: '天気予報',
+      japanese: '天気ダッシュボード ',
       description: 'Dashboard con pronósticos y mapas interactivos',
       image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=500&fit=crop',
       tags: ['Next.js', 'API', 'Charts'],
