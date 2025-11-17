@@ -16,7 +16,7 @@
   --color-dark-gray: var(--dark-gray);
   --color-light-gray: var(--light-gray);
   --color-primary: var(--primary);
-  
+
   --font-sans: var(--font-noto-sans);
   --font-serif: var(--font-noto-serif);
 }
@@ -57,7 +57,7 @@ body {
 
 /* Patrones de fondo japoneses */
 .pattern-bg {
-  background-image: url('/images/patterns/patron-asanoha.avif');
+  background-image: url("/images/patterns/patron-asanoha.avif");
   background-size: 200px;
   background-repeat: repeat;
   opacity: 0.03;
@@ -70,7 +70,7 @@ body {
 }
 
 .pattern-bg-waves {
-  background-image: url('/images/patterns/patron-ondas-seigaiha.avif');
+  background-image: url("/images/patterns/patron-ondas-seigaiha.avif");
   background-size: 150px;
   background-repeat: repeat;
   opacity: 0.04;
@@ -83,7 +83,7 @@ body {
 }
 
 .pattern-bg-uroko {
-  background-image: url('/images/patterns/patron-uroko.avif');
+  background-image: url("/images/patterns/patron-uroko.avif");
   background-size: 100px;
   background-repeat: repeat;
   opacity: 0.05;
@@ -96,7 +96,7 @@ body {
 }
 
 .pattern-bg-kumo {
-  background-image: url('/images/patterns/kumo.avif');
+  background-image: url("/images/patterns/kumo.avif");
   background-size: 250px;
   background-repeat: repeat;
   opacity: 0.06;
@@ -109,7 +109,7 @@ body {
 }
 
 .pattern-bg-hishi {
-  background-image: url('/images/patterns/hishi.avif');
+  background-image: url("/images/patterns/hishi.avif");
   background-size: 250px;
   background-repeat: repeat;
   opacity: 0.06;
@@ -121,14 +121,13 @@ body {
   pointer-events: none;
 }
 
-
 /* Líneas horizontales estilo retro */
 .retro-lines {
   position: relative;
 }
 
 .retro-lines::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 0;
