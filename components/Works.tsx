@@ -1,40 +1,8 @@
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
+import { projects } from "@/data/projects";
 
 export function Works() {
-  const projects = [
-    {
-      title: "E-Commerce Platform",
-      japanese: "Eコマース",
-      description: "Plataforma completa con carrito, pagos y panel admin",
-      image:
-        "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop",
-      tags: ["React", "Node.js", "MongoDB"],
-      github: "#",
-      demo: "#",
-    },
-    {
-      title: "Task Manager",
-      japanese: "タスク管理",
-      description: "Gestión de tareas con drag & drop y tiempo real",
-      image:
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
-      tags: ["TypeScript", "React", "Firebase"],
-      github: "#",
-      demo: "#",
-    },
-    {
-      title: "Weather Dashboard",
-      japanese: "天気予報",
-      description: "Dashboard con pronósticos y mapas interactivos",
-      image:
-        "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=500&fit=crop",
-      tags: ["Next.js", "API", "Charts"],
-      github: "#",
-      demo: "#",
-    },
-  ];
-
   return (
     <section
       id="projects"
@@ -89,6 +57,8 @@ export function Works() {
                   </a>
                   <a
                     href={project.demo}
+                    rel="noopener noreferrer"
+                    target="_blank"
                     className="flex-1 bg-primary hover:bg-primary/90 text-white px-3 py-2 text-sm flex items-center justify-center gap-2 transition-all"
                   >
                     <ExternalLink className="w-4 h-4" />
