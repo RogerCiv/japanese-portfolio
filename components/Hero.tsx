@@ -73,11 +73,11 @@ export default function Hero() {
             <div className="space-y-2 text-foreground/70">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-primary" />
-                <span>Barcelona, España</span>
+                <span>Granada, España</span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-primary" />
-                <span>5+ años de experiencia</span>
+                <span>1+ años de experiencia</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary" />
