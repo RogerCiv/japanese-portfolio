@@ -77,7 +77,7 @@ export default function Hero() {
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-primary" />
-                <span>1+ años de experiencia</span>
+                <span>2+ años de experiencia</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary" />
