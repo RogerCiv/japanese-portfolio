@@ -18,19 +18,19 @@ export function generatePortfolioContext(): string {
     )
     .join("\n");
 
-  // Formatear experiencia (usan position en lugar de role, y achievements)
+  // ✅ Formatear experiencia (usan title, sub_title, years, details)
   const experienceText = experiences
     .map(
       (exp) =>
-        `- ${exp.position} en ${exp.company} (${exp.period}): ${exp.description}${exp.achievements ? `. Logros: ${exp.achievements.join(", ")}` : ""}`
+        `- ${exp.title} en ${exp.sub_title} (${exp.years}): ${exp.details}`
     )
     .join("\n");
 
-  // Formatear educación
+  // ✅ Formatear educación (usan title, sub_title, years, details)
   const educationText = educations
     .map(
       (edu) =>
-        `- ${edu.degree} en ${edu.institution} (${edu.period})${edu.description ? `: ${edu.description}` : ""}`
+        `- ${edu.title} en ${edu.sub_title} (${edu.years}): ${edu.details}`
     )
     .join("\n");
 
