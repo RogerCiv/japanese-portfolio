@@ -65,7 +65,7 @@ export default function Hero() {
               </p>
 
               <p className="text-xl sm:text-2xl text-accent font-semibold mb-4">
-                Desarrollador Web Full Stack
+                Desarrollador Software
               </p>
             </div>
 
