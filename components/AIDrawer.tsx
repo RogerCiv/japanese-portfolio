@@ -77,22 +77,45 @@ export default function AIDrawer() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error:", err);
-      setError(err.message);
+      const message = err instanceof Error ? err.message : "Error desconocido";
+      setError(message);
 
       const errorMessage: Message = {
         role: "assistant",
         content:
-          err.message === "Créditos de OpenAI agotados"
-            ? "Lo siento, los créditos de OpenAI se han agotado. Por favor, contacta al administrador."
-            : "Lo siento, hubo un error al procesar tu mensaje. Por favor, intenta de nuevo.",
+          message === "Límite de requests alcanzado. Por favor, espera un momento."
+            ? "Lo siento, el servicio está muy solicitado en este momento. Por favor, intenta de nuevo en unos segundos."
+            : "Lo siento, hubo un error al procesar tu solicitud. Por favor, intenta de nuevo.",
       };
 
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const formatMessage = (content: string) => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const parts = content.split(urlRegex);
+
+    return parts.map((part, index) => {
+      if (part.match(urlRegex)) {
+        return (
+          <a
+            key={index}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline break-all"
+          >
+            {part}
+          </a>
+        );
+      }
+      return part;
+    });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -121,9 +144,8 @@ export default function AIDrawer() {
 
       {/* Drawer */}
       <div
-        className={`fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-background border-l-2 border-foreground/20 shadow-2xl transform transition-transform duration-300 ease-in-out ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-background border-l-2 border-foreground/20 shadow-2xl transform transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         {/* Header */}
         <div className="bg-primary text-white p-4 flex items-center justify-between border-b-2 border-primary/20">
@@ -162,16 +184,14 @@ export default function AIDrawer() {
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`flex gap-3 ${
-                message.role === "user" ? "flex-row-reverse" : "flex-row"
-              }`}
+              className={`flex gap-3 ${message.role === "user" ? "flex-row-reverse" : "flex-row"
+                }`}
             >
               <div
-                className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                  message.role === "user"
+                className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${message.role === "user"
                     ? "bg-primary text-white"
                     : "bg-foreground/10 text-foreground"
-                }`}
+                  }`}
               >
                 {message.role === "user" ? (
                   <User className="w-4 h-4" />
@@ -181,14 +201,13 @@ export default function AIDrawer() {
               </div>
 
               <div
-                className={`flex-1 px-4 py-2 rounded-lg ${
-                  message.role === "user"
+                className={`flex-1 px-4 py-2 rounded-lg ${message.role === "user"
                     ? "bg-primary text-white ml-8"
                     : "bg-foreground/5 text-foreground mr-8"
-                }`}
+                  }`}
               >
                 <p className="text-sm leading-relaxed whitespace-pre-wrap">
-                  {message.content}
+                  {formatMessage(message.content)}
                 </p>
               </div>
             </div>
