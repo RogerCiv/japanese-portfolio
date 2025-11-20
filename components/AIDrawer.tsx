@@ -2,68 +2,20 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Sparkles, User, Bot } from "lucide-react";
-
-// Define types for window.ai
-declare global {
-  interface Window {
-    ai?: {
-      languageModel?: {
-        capabilities: () => Promise<{
-          available: "readily" | "after-download" | "no";
-        }>;
-        create: (options?: {
-          systemPrompt?: string;
-          temperature?: number;
-          topK?: number;
-        }) => Promise<AILanguageModel>;
-      };
-    };
-  }
-}
-
-interface AILanguageModel {
-  prompt: (input: string) => Promise<string>;
-  promptStreaming: (input: string) => AsyncIterable<string>;
-  destroy: () => void;
-}
+import {
+  MessageCircle,
+  X,
+  Send,
+  Sparkles,
+  User,
+  Bot,
+  AlertCircle,
+} from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
   content: string;
 }
-
-const PORTFOLIO_CONTEXT = `Eres un asistente personal del portfolio de Roger Civ.
-
-INFORMACIÓN SOBRE ROGER:
-- Nombre: Roger Civ
-- Profesión: Desarrollador Web Full Stack
-- Ubicación: Barcelona, España
-- Experiencia: 5+ años en desarrollo web
-- Email: contacto@rogerciv.dev
-
-FILOSOFÍA DE TRABAJO:
-- Inspirado en la filosofía japonesa del wabi-sabi (belleza en la simplicidad)
-- Código limpio y mantenible
-- Diseño centrado en el usuario
-- Aprendizaje continuo
-- Atención al detalle
-
-HABILIDADES TÉCNICAS:
-- Frontend: React, Next.js, TypeScript, Tailwind CSS
-- Backend: Node.js, Express, NestJS
-- Bases de datos: MongoDB, PostgreSQL, MySQL
-- DevOps: Docker, Git, CI/CD
-- Testing: Jest, Cypress, Testing Library
-
-PROYECTOS DESTACADOS:
-- E-Commerce Platform: Plataforma completa con carrito, pagos y panel admin
-- Task Manager: Gestión de tareas con drag & drop y tiempo real
-- Weather Dashboard: Dashboard con pronósticos y mapas interactivos
-
-Tu tarea es responder preguntas sobre Roger de manera amigable, profesional y concisa.
-Si te preguntan algo que no está en el contexto, di amablemente que no tienes esa información específica.
-Responde en español de forma natural y cercana.`;
 
 export default function AIDrawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,73 +28,23 @@ export default function AIDrawer() {
     },
   ]);
   const [isLoading, setIsLoading] = useState(false);
-  const [aiAvailable, setAiAvailable] = useState<
-    "checking" | "ready" | "unavailable"
-  >("checking");
-  const [session, setSession] = useState<AILanguageModel | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  // Check AI availability
-  useEffect(() => {
-    checkAIAvailability();
-  }, []);
-
-  // Auto-scroll to bottom
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Focus input when drawer opens
   useEffect(() => {
     if (isOpen) {
       inputRef.current?.focus();
     }
   }, [isOpen]);
 
-  const checkAIAvailability = async () => {
-    try {
-      if (!window.ai?.languageModel) {
-        setAiAvailable("unavailable");
-        return;
-      }
-
-      const capabilities = await window.ai.languageModel.capabilities();
-
-      if (capabilities.available === "no") {
-        setAiAvailable("unavailable");
-      } else if (capabilities.available === "readily") {
-        await createSession();
-        setAiAvailable("ready");
-      } else {
-        // "after-download" - model needs to be downloaded
-        setAiAvailable("unavailable");
-      }
-    } catch (error) {
-      console.error("Error checking AI availability:", error);
-      setAiAvailable("unavailable");
-    }
-  };
-
-  const createSession = async () => {
-    if (!window.ai?.languageModel) return;
-
-    try {
-      const aiSession = await window.ai.languageModel.create({
-        systemPrompt: PORTFOLIO_CONTEXT,
-        temperature: 0.7,
-        topK: 3,
-      });
-      setSession(aiSession);
-    } catch (error) {
-      console.error("Error creating AI session:", error);
-      setAiAvailable("unavailable");
-    }
-  };
-
   const handleSend = async () => {
-    if (!input.trim() || isLoading || !session) return;
+    if (!input.trim() || isLoading) return;
 
     const userMessage: Message = {
       role: "user",
@@ -152,23 +54,39 @@ export default function AIDrawer() {
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsLoading(true);
+    setError(null);
 
     try {
-      const response = await session.prompt(userMessage.content);
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [...messages, userMessage],
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Error desconocido");
+      }
 
       const assistantMessage: Message = {
         role: "assistant",
-        content: response,
+        content: data.message,
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch (error) {
-      console.error("Error getting AI response:", error);
+    } catch (err: any) {
+      console.error("Error:", err);
+      setError(err.message);
 
       const errorMessage: Message = {
         role: "assistant",
         content:
-          "Lo siento, hubo un error al procesar tu mensaje. Por favor, intenta de nuevo.",
+          err.message === "Créditos de OpenAI agotados"
+            ? "Lo siento, los créditos de OpenAI se han agotado. Por favor, contacta al administrador."
+            : "Lo siento, hubo un error al procesar tu mensaje. Por favor, intenta de nuevo.",
       };
 
       setMessages((prev) => [...prev, errorMessage]);
@@ -195,10 +113,9 @@ export default function AIDrawer() {
       >
         <MessageCircle className="w-6 h-6" />
         <span className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse"></span>
-        
-        {/* Tooltip */}
+
         <span className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-foreground text-background text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-          Pregúntame sobre Roger
+          Pregúntame sobre Roger 🤖
         </span>
       </button>
 
@@ -217,13 +134,7 @@ export default function AIDrawer() {
             </div>
             <div>
               <h3 className="font-bold text-lg">Asistente IA</h3>
-              <p className="text-xs text-white/80">
-                {aiAvailable === "ready"
-                  ? "En línea"
-                  : aiAvailable === "checking"
-                    ? "Verificando..."
-                    : "No disponible"}
-              </p>
+              <p className="text-xs text-white/80">Con Llama 3 🦙</p>
             </div>
           </div>
           <button
@@ -236,18 +147,13 @@ export default function AIDrawer() {
           </button>
         </div>
 
-        {/* AI Status Warning */}
-        {aiAvailable === "unavailable" && (
-          <div className="bg-accent/10 border-l-4 border-accent p-4 m-4">
-            <p className="text-sm text-foreground">
-              <strong>Chrome AI no disponible.</strong>
-              <br />
-              Necesitas Chrome Canary con la flag{" "}
-              <code className="bg-foreground/10 px-1 rounded text-xs">
-                chrome://flags/#optimization-guide-on-device-model
-              </code>{" "}
-              activada.
-            </p>
+        {/* Error Message */}
+        {error && (
+          <div className="bg-red-500/10 border-l-4 border-red-500 p-3 m-4">
+            <div className="flex items-start gap-2">
+              <AlertCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+              <p className="text-xs text-foreground">{error}</p>
+            </div>
           </div>
         )}
 
@@ -260,9 +166,8 @@ export default function AIDrawer() {
                 message.role === "user" ? "flex-row-reverse" : "flex-row"
               }`}
             >
-              {/* Avatar */}
               <div
-                className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+                className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                   message.role === "user"
                     ? "bg-primary text-white"
                     : "bg-foreground/10 text-foreground"
@@ -275,7 +180,6 @@ export default function AIDrawer() {
                 )}
               </div>
 
-              {/* Message bubble */}
               <div
                 className={`flex-1 px-4 py-2 rounded-lg ${
                   message.role === "user"
@@ -322,21 +226,15 @@ export default function AIDrawer() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder={
-                aiAvailable === "ready"
-                  ? "Pregunta sobre Roger..."
-                  : "AI no disponible"
-              }
-              disabled={aiAvailable !== "ready" || isLoading}
+              placeholder="Pregunta sobre Roger..."
+              disabled={isLoading}
               rows={1}
               className="flex-1 px-4 py-2 border-2 border-foreground/20 rounded-lg focus:border-primary focus:outline-none resize-none disabled:opacity-50 disabled:cursor-not-allowed text-sm"
             />
             <button
               type="button"
               onClick={handleSend}
-              disabled={
-                !input.trim() || isLoading || aiAvailable !== "ready"
-              }
+              disabled={!input.trim() || isLoading}
               className="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Enviar mensaje"
             >
@@ -344,7 +242,7 @@ export default function AIDrawer() {
             </button>
           </div>
           <p className="text-xs text-foreground/50 mt-2 text-center">
-            Presiona Enter para enviar, Shift+Enter para nueva línea
+            Enter para enviar · Shift+Enter para nueva línea
           </p>
         </div>
       </div>
