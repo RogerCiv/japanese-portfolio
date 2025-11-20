@@ -1,5 +1,6 @@
 import { Briefcase, Calendar, GraduationCap } from "lucide-react";
 import { educations, experiences } from "@/data/experience";
+import { TimelineSection } from "./TimelineSection";
 
 export function Experience() {
   return (
@@ -26,142 +27,22 @@ export function Experience() {
         {/* Grid 2 columnas */}
         <div className="grid lg:grid-cols-2 gap-12">
           {/* EDUCACIÓN - Columna Izquierda */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 bg-primary/10 flex items-center justify-center border-2 border-primary/30">
-                <GraduationCap className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-foreground">
-                  Educación
-                </h3>
-                <p className="text-japanese text-sm text-primary/70">学歴</p>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              {educations.map((item, index) => (
-                <div
-                  key={item.description}
-                  className="group relative bg-background border-l-4 border-primary/30 hover:border-primary transition-all duration-300 p-6"
-                >
-                  {/* Decoración esquina */}
-                  <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-foreground/10 group-hover:border-primary/30 transition-colors"></div>
-
-                  {/* Contenido */}
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex-1">
-                      <h4 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
-                        {item.degree}
-                      </h4>
-                      <p className="text-japanese text-sm text-primary/70">
-                        {item.japanese}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-foreground/60 bg-foreground/5 px-3 py-1">
-                      <Calendar className="w-3 h-3" />
-                      {item.period}
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-foreground/70 mb-2">
-                    {item.institution}
-                  </p>
-
-                  {/* Separador */}
-                  <div className="flex items-center gap-2 my-3">
-                    <div className="flex-1 h-px bg-foreground/10"></div>
-                    <div className="w-1 h-1 bg-primary/50 rounded-full"></div>
-                    <div className="flex-1 h-px bg-foreground/10"></div>
-                  </div>
-
-                  <p className="text-sm text-foreground/60 italic">
-                    {item.description}
-                  </p>
-
-                  {/* Número japonés */}
-                  <div className="absolute bottom-4 right-4 text-5xl font-bold text-primary/5 group-hover:text-primary/10 transition-colors">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <TimelineSection
+            title="Educación"
+            japanese="学歴"
+            icon={<GraduationCap className="w-6 h-6 text-primary" />}
+            items={educations}
+            variant="primary"
+          />
 
           {/* EXPERIENCIA LABORAL - Columna Derecha */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 bg-accent/10 flex items-center justify-center border-2 border-accent/30">
-                <Briefcase className="w-6 h-6 text-accent" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-foreground">
-                  Experiencia Laboral
-                </h3>
-                <p className="text-japanese text-sm text-accent/70">職歴</p>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              {experiences.map((item, index) => (
-                <div
-                  key={item.description}
-                  className="group relative bg-background border-l-4 border-accent/30 hover:border-accent transition-all duration-300 p-6"
-                >
-                  {/* Decoración esquina */}
-                  <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-foreground/10 group-hover:border-accent/30 transition-colors"></div>
-
-                  {/* Contenido */}
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex-1">
-                      <h4 className="text-lg font-bold text-foreground group-hover:text-accent transition-colors">
-                        {item.position}
-                      </h4>
-                      <p className="text-japanese text-sm text-accent/70">
-                        {item.japanese}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-foreground/60 bg-foreground/5 px-3 py-1">
-                      <Calendar className="w-3 h-3" />
-                      {item.period}
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-foreground/70 mb-3">
-                    {item.company}
-                  </p>
-
-                  {/* Separador */}
-                  <div className="flex items-center gap-2 my-3">
-                    <div className="flex-1 h-px bg-foreground/10"></div>
-                    <div className="w-1 h-1 bg-accent/50 rounded-full"></div>
-                    <div className="flex-1 h-px bg-foreground/10"></div>
-                  </div>
-
-                  <p className="text-sm text-foreground/70 mb-4">
-                    {item.description}
-                  </p>
-
-                  {/* Logros */}
-                  <div className="flex flex-wrap gap-2">
-                    {item.achievements.map((achievement) => (
-                      <span
-                        key={achievement}
-                        className="text-xs px-3 py-1 border border-foreground/10 text-foreground/60 hover:border-accent/30 hover:text-accent transition-colors"
-                      >
-                        {achievement}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Número japonés */}
-                  <div className="absolute bottom-4 right-4 text-5xl font-bold text-accent/5 group-hover:text-accent/10 transition-colors">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <TimelineSection
+            title="Experiencia Laboral"
+            japanese="職歴"
+            icon={<Briefcase className="w-6 h-6 text-accent" />}
+            items={experiences}
+            variant="accent"
+          />
         </div>
 
         {/* Timeline central decorativo (opcional) */}

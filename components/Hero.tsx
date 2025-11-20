@@ -81,17 +81,17 @@ export default function Hero() {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary" />
-                <span>contacto@rogerciv.dev</span>
+                <span>rogercivdev@gmail.com</span>
               </div>
             </div>
 
             {/* Descripción */}
             <div className="border-l-4 border-primary pl-6">
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
-                Creando experiencias digitales únicas con código limpio y diseño
-                minimalista inspirado en la filosofía japonesa del{" "}
-                <span className="text-primary font-semibold">wabi-sabi</span>:
-                belleza en la simplicidad.
+                Creando experiencias digitales únicas con código limpio y un
+                enfoque versátil. Transformo ideas en realidad, adaptando el
+                diseño y la funcionalidad a las necesidades específicas de
+                cada proyecto, sin limitarme a un solo estilo.
               </p>
             </div>
 

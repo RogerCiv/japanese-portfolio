@@ -1,55 +1,63 @@
-import type { Education, Experience } from "@/types/experience";
+import type { TimelineItem } from "@/types/experience";
 
-export const educations: Education[] = [
+export const educations: TimelineItem[] = [
   {
-    degree: "Grado en Ingeniería Informática",
-    japanese: "情報工学",
-    institution: "Universidad Politécnica de Cataluña",
-    period: "2015 - 2019",
-    description: "Especialización en Desarrollo de Software",
-  },
-  {
-    degree: "Máster en Desarrollo Web",
+    title: "Desarrollo de Aplicaciones Web",
+    sub_title: "IES Hermenegildo Lanz, Granada",
+    years: "2022 - 2024",
+    details:
+      "Obtuve el título de Técnico Superior en Desarrollo de Aplicaciones Web, adquiriendo las bases necesarias y habilidades avanzadas para la programación y desarrollo web.",
     japanese: "ウェブ開発",
-    institution: "Escuela Superior de Diseño",
-    period: "2019 - 2020",
-    description: "Full Stack Development & UI/UX Design",
   },
   {
-    degree: "Certificación AWS Solutions Architect",
-    japanese: "クラウド認定",
-    institution: "Amazon Web Services",
-    period: "2021",
-    description: "Cloud Architecture & DevOps",
+    title: "Sistemas Microinformáticos y Redes",
+    sub_title: "IES Padre Suárez, Granada",
+    years: "2020 - 2022",
+    details:
+      "Obtuve el título de Técnico en Sistemas Microinformáticos y Redes, adquiriendo las bases necesarias y habilidades avanzadas para comercialización, montaje y reparación de equipos, redes y servicios microinformáticos en general, como parte del soporte informático.",
+    japanese: "ネットワーク",
+  },
+  {
+    title: "Certificado de Profesionalidad en Sistemas Microinformáticos y Redes",
+    sub_title: "Academia Hermanos Naranjo, Granada",
+    years: "2018",
+    details:
+      "Obtuve el certificado de profesionalidad en Sistemas Microinformáticos y Redes, adquiriendo las bases necesarias y habilidades avanzadas para la comercialización, montaje y reparación de equipos, redes y servicios microinformáticos en general, como parte del soporte informático.",
+    japanese: "専門資格",
   },
 ];
 
-export const experiences: Experience[] = [
+export const experiences: TimelineItem[] = [
   {
-    position: "Senior Full Stack Developer",
-    japanese: "シニア開発者",
-    company: "Tech Solutions Inc.",
-    period: "2021 - Presente",
-    description:
-      "Liderando proyectos de e-commerce y aplicaciones web escalables con React, Node.js y AWS.",
-    achievements: ["Optimización 40%", "Equipo de 5 devs", "CI/CD Pipeline"],
+    title: "Desarrollador Web Freelance",
+    sub_title: "Freelance",
+    years: "2024 - Presente",
+    details:
+      "Desarrollo de sitios web personalizados para pequeñas y medianas empresas, enfocándome en diseño responsive, optimización SEO y experiencia de usuario.",
+    japanese: "フリーランス",
   },
   {
-    position: "Full Stack Developer",
-    japanese: "開発者",
-    company: "Digital Agency",
-    period: "2019 - 2021",
-    description:
-      "Desarrollo de aplicaciones web para clientes corporativos usando MERN stack.",
-    achievements: ["15+ proyectos", "Clean Architecture", "Testing 90%"],
+    title: "Desarrollador Web en Prácticas",
+    sub_title: "ATI Soluciones",
+    years: "2024",
+    details:
+      "Prácticas FCT en las que contribuí en la ampliación y mejora del ERP de la empresa colaborando con el resto del equipo, utilizando tecnologías como Laravel, JQUERY, Bootstrap. Implementé una funcionalidad en el sistema de citas para realizar llamadas automáticas con Asterisk, Node.js y Laravel, permitiendo a los usuarios confirmar o cancelar sus citas de manera eficiente.",
+    japanese: "インターン",
   },
   {
-    position: "Frontend Developer",
-    japanese: "フロントエンド",
-    company: "Startup Tech",
-    period: "2018 - 2019",
-    description:
-      "Creación de interfaces responsive y accesibles con React y TypeScript.",
-    achievements: ["A11y compliance", "Performance +50%", "Mobile First"],
+    title: "Sistemas Microinformáticos y Redes en Prácticas",
+    sub_title: "Delegación Territorial de Medio Ambiente",
+    years: "2022",
+    details:
+      "Prácticas FCT en las que realicé tareas de mantenimiento y reparación de equipos informáticos, instalación de sistemas operativos y configuración de redes informáticas, adquiriendo habilidades y conocimientos necesarios para el soporte informático.",
+    japanese: "実習生",
+  },
+  {
+    title: "Técnico en Sistemas Microinformáticos y Redes en Prácticas",
+    sub_title: "MEGA 2 SEGURIDAD S.L",
+    years: "2018",
+    details:
+      "Prácticas FCT en las que realicé tareas de mantenimiento y reparación de equipos informáticos, instalación de sistemas operativos y configuración de redes informáticas, adquiriendo habilidades y conocimientos necesarios para el soporte informático.",
+    japanese: "技術者",
   },
 ];
