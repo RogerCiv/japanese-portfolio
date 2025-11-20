@@ -1,16 +1,15 @@
 // app/api/chat/route.ts
-import Groq from "groq-sdk";
 import { NextResponse } from "next/server";
+import Groq from "groq-sdk";
 import { generatePortfolioContext } from "@/data/portfolio-context";
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
-// ✅ Cache del contexto (no regenerarlo cada vez)
 let cachedContext: string | null = null;
 let lastContextUpdate = 0;
-const CONTEXT_CACHE_DURATION = 5 * 60 * 1000; // 5 minutos
+const CONTEXT_CACHE_DURATION = 5 * 60 * 1000;
 
 function getPortfolioContext() {
   const now = Date.now();
@@ -25,7 +24,7 @@ export async function POST(request: Request) {
   try {
     const { messages } = await request.json();
 
-    // ✅ Validación
+    // ✅ Validación con NextResponse
     if (!Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json(
         { error: "Mensajes inválidos" },
@@ -33,9 +32,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // ✅ Limitar historial (últimos 10 mensajes para ahorrar tokens)
     const recentMessages = messages.slice(-10);
-
     const portfolioContext = getPortfolioContext();
 
     const completion = await groq.chat.completions.create({
@@ -43,47 +40,62 @@ export async function POST(request: Request) {
         { role: "system", content: portfolioContext },
         ...recentMessages,
       ],
-      model: "llama-3.1-8b-instant", // ✅ Modelo más rápido y con mejores límites
+      model: "llama-3.1-8b-instant",
       temperature: 0.7,
-      max_tokens: 250,
+      max_tokens: 450,
       top_p: 0.9,
+      stream: true,
     });
 
-    const assistantMessage = completion.choices[0].message.content;
+    // ✅ Response nativo para streaming (OBLIGATORIO)
+    const encoder = new TextEncoder();
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          for await (const chunk of completion) {
+            const content = chunk.choices[0]?.delta?.content || "";
+            
+            if (content) {
+              const data = JSON.stringify({ content });
+              controller.enqueue(encoder.encode(`data: ${data}\n\n`));
+            }
+          }
+          
+          controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+          controller.close();
+        } catch (error) {
+          console.error("❌ Streaming Error:", error);
+          controller.error(error);
+        }
+      },
+    });
 
-    // ✅ Log opcional para monitorear uso
-    if (process.env.NODE_ENV === "development") {
-      console.log("📊 Uso de tokens:", {
-        prompt: completion.usage?.prompt_tokens,
-        completion: completion.usage?.completion_tokens,
-        total: completion.usage?.total_tokens,
-      });
-    }
-
-    return NextResponse.json({ message: assistantMessage });
+    // ✅ Response nativo (no NextResponse) para streaming
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      },
+    });
   } catch (error: any) {
     console.error("❌ Groq Error:", error);
 
+    let errorMessage = "Error al procesar la solicitud.";
+    let status = 500;
+
     if (error.status === 429) {
-      return NextResponse.json(
-        {
-          error:
-            "Límite de requests alcanzado. Por favor, espera un momento.",
-        },
-        { status: 429 }
-      );
+      errorMessage = "Límite de requests alcanzado.";
+      status = 429;
+    } else if (error.status === 401) {
+      errorMessage = "API Key inválida.";
+      status = 401;
     }
 
-    if (error.status === 401) {
-      return NextResponse.json(
-        { error: "API Key inválida." },
-        { status: 401 }
-      );
-    }
-
+    // ✅ NextResponse para errores (funciona perfectamente)
     return NextResponse.json(
-      { error: "Error al procesar la solicitud." },
-      { status: 500 }
+      { error: errorMessage },
+      { status }
     );
   }
 }

@@ -10,11 +10,36 @@ import {
   User,
   Bot,
   AlertCircle,
+  ExternalLink,
 } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
   content: string;
+}
+
+// ✅ Función para detectar y convertir URLs en enlaces
+function formatMessageContent(content: string) {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const parts = content.split(urlRegex);
+
+  return parts.map((part, index) => {
+    if (part.match(urlRegex)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline inline-flex items-center gap-1 font-medium"
+        >
+          {part}
+          <ExternalLink className="w-3 h-3" />
+        </a>
+      );
+    }
+    return <span key={index}>{part}</span>;
+  });
 }
 
 export default function AIDrawer() {
@@ -32,6 +57,7 @@ export default function AIDrawer() {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -42,6 +68,13 @@ export default function AIDrawer() {
       inputRef.current?.focus();
     }
   }, [isOpen]);
+
+  // ✅ Cleanup al desmontar
+  useEffect(() => {
+    return () => {
+      abortControllerRef.current?.abort();
+    };
+  }, []);
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -56,66 +89,101 @@ export default function AIDrawer() {
     setIsLoading(true);
     setError(null);
 
+    // Añadir mensaje vacío del asistente que se irá llenando
+    const assistantMessageIndex = messages.length + 1;
+    setMessages((prev) => [
+      ...prev,
+      { role: "assistant", content: "" },
+    ]);
+
     try {
+      // ✅ Crear nuevo AbortController para esta request
+      abortControllerRef.current = new AbortController();
+
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: [...messages, userMessage],
         }),
+        signal: abortControllerRef.current.signal,
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
+        const data = await response.json();
         throw new Error(data.error || "Error desconocido");
       }
 
-      const assistantMessage: Message = {
-        role: "assistant",
-        content: data.message,
-      };
+      // ✅ Procesar el stream
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
 
-      setMessages((prev) => [...prev, assistantMessage]);
-    } catch (err: unknown) {
+      if (!reader) {
+        throw new Error("No se pudo obtener el stream");
+      }
+
+      let accumulatedContent = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+        const lines = chunk.split("\n");
+
+        for (const line of lines) {
+          if (line.startsWith("data: ")) {
+            const data = line.slice(6);
+
+            if (data === "[DONE]") {
+              break;
+            }
+
+            try {
+              const parsed = JSON.parse(data);
+              if (parsed.content) {
+                accumulatedContent += parsed.content;
+
+                // ✅ Actualizar el mensaje del asistente en tiempo real
+                setMessages((prev) => {
+                  const newMessages = [...prev];
+                  newMessages[assistantMessageIndex] = {
+                    role: "assistant",
+                    content: accumulatedContent,
+                  };
+                  return newMessages;
+                });
+              }
+            } catch (e) {
+              // Ignorar errores de parsing
+            }
+          }
+        }
+      }
+    } catch (err: any) {
+      if (err.name === "AbortError") {
+        console.log("Request abortada");
+        return;
+      }
+
       console.error("Error:", err);
-      const message = err instanceof Error ? err.message : "Error desconocido";
-      setError(message);
+      setError(err.message);
 
-      const errorMessage: Message = {
-        role: "assistant",
-        content:
-          message === "Límite de requests alcanzado. Por favor, espera un momento."
-            ? "Lo siento, el servicio está muy solicitado en este momento. Por favor, intenta de nuevo en unos segundos."
-            : "Lo siento, hubo un error al procesar tu solicitud. Por favor, intenta de nuevo.",
-      };
-
-      setMessages((prev) => [...prev, errorMessage]);
+      // ✅ Reemplazar el mensaje vacío con un error
+      setMessages((prev) => {
+        const newMessages = [...prev];
+        newMessages[assistantMessageIndex] = {
+          role: "assistant",
+          content:
+            "Lo siento, hubo un error al procesar tu mensaje. Por favor, intenta de nuevo.",
+        };
+        return newMessages;
+      });
     } finally {
       setIsLoading(false);
+      abortControllerRef.current = null;
     }
-  };
-
-  const formatMessage = (content: string) => {
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const parts = content.split(urlRegex);
-
-    return parts.map((part, index) => {
-      if (part.match(urlRegex)) {
-        return (
-          <a
-            key={index}
-            href={part}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:underline break-all"
-          >
-            {part}
-          </a>
-        );
-      }
-      return part;
-    });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -144,8 +212,9 @@ export default function AIDrawer() {
 
       {/* Drawer */}
       <div
-        className={`fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-background border-l-2 border-foreground/20 shadow-2xl transform transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+        className={`fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-background border-l-2 border-foreground/20 shadow-2xl transform transition-transform duration-300 ease-in-out ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
       >
         {/* Header */}
         <div className="bg-primary text-white p-4 flex items-center justify-between border-b-2 border-primary/20">
@@ -184,14 +253,16 @@ export default function AIDrawer() {
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`flex gap-3 ${message.role === "user" ? "flex-row-reverse" : "flex-row"
-                }`}
+              className={`flex gap-3 ${
+                message.role === "user" ? "flex-row-reverse" : "flex-row"
+              }`}
             >
               <div
-                className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${message.role === "user"
+                className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+                  message.role === "user"
                     ? "bg-primary text-white"
                     : "bg-foreground/10 text-foreground"
-                  }`}
+                }`}
               >
                 {message.role === "user" ? (
                   <User className="w-4 h-4" />
@@ -201,38 +272,24 @@ export default function AIDrawer() {
               </div>
 
               <div
-                className={`flex-1 px-4 py-2 rounded-lg ${message.role === "user"
+                className={`flex-1 px-4 py-2 rounded-lg ${
+                  message.role === "user"
                     ? "bg-primary text-white ml-8"
                     : "bg-foreground/5 text-foreground mr-8"
-                  }`}
+                }`}
               >
                 <p className="text-sm leading-relaxed whitespace-pre-wrap">
-                  {formatMessage(message.content)}
+                  {formatMessageContent(message.content)}
+                  {/* ✅ Cursor parpadeante mientras escribe */}
+                  {message.role === "assistant" &&
+                    index === messages.length - 1 &&
+                    isLoading && (
+                      <span className="inline-block w-1 h-4 bg-foreground/60 ml-1 animate-pulse"></span>
+                    )}
                 </p>
               </div>
             </div>
           ))}
-
-          {isLoading && (
-            <div className="flex gap-3">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center">
-                <Bot className="w-4 h-4" />
-              </div>
-              <div className="flex-1 px-4 py-2 rounded-lg bg-foreground/5">
-                <div className="flex gap-1">
-                  <div className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce"></div>
-                  <div
-                    className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce"
-                    style={{ animationDelay: "0.1s" }}
-                  ></div>
-                  <div
-                    className="w-2 h-2 bg-foreground/40 rounded-full animate-bounce"
-                    style={{ animationDelay: "0.2s" }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-          )}
 
           <div ref={messagesEndRef} />
         </div>
