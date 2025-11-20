@@ -13,7 +13,7 @@ export const projects: Project[] = [
   {
     title: "Diversia Interiorismo",
     japanese: "インテリアデザイン",
-    description: "Sitio web corporativo especializado en neuroarquitectura y diseño biofílico",
+    description: "Sitio web corporativo especializado en neuroarquitectura y diseño biofílico.",
     image: diversiaImage,
     tags: ["NextJS", "TailwindCSS", "Prisma", "Turso", "Cloudflare", "Vercel"],
     github: "#",
@@ -22,7 +22,7 @@ export const projects: Project[] = [
   {
     title: "Recursos Web",
     japanese: "開発者リソース",
-    description: "Directorio curado de recursos y herramientas para desarrolladores web",
+    description: "Directorio curado de recursos y herramientas para desarrolladores web.",
     image: recursosWebImage,
     tags: ["Astro", "TailwindCSS"],
     github: "#",
@@ -31,7 +31,7 @@ export const projects: Project[] = [
   {
     title: "Noken Vocabulary",
     japanese: "日本語学習",
-    description: "Aplicación de estudio de vocabulario para el examen JLPT",
+    description: "Aplicación de estudio de vocabulario para el examen JLPT.",
     image: nokenImage,
     tags: ["React", "TailwindCSS", "Supabase", "React-router"],
     github: "#",
@@ -40,7 +40,7 @@ export const projects: Project[] = [
   {
     title: "Illustrator Amelia",
     japanese: "イラストポートフォリオ",
-    description: "Portfolio minimalista y vibrante para ilustradora freelance",
+    description: "Portfolio minimalista y vibrante para ilustradora freelance.",
     image: illustratorImage,
     tags: ["Astro", "TailwindCSS"],
     github: "#",
@@ -49,7 +49,7 @@ export const projects: Project[] = [
     {
     title: "Roger Civ Dev",
     japanese: "ポートフォリオ (Astro)",
-    description: "Portfolio personal rápido y optimizado construido con Astro",
+    description: "Portfolio personal rápido y optimizado construido con Astro.",
     image: astroPortfolioImage,
     tags: ["Astro", "TailwindCSS"],
     github: "#",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     {
     title: "Portfolio Nextjs",
     japanese: "ポートフォリオ",
-    description: "Portfolio personal moderno y responsive",
+    description: "Portfolio personal moderno y responsive.",
     image: portfolioImage,
     tags: ["NextJS", "TailwindCSS"],
     github: "#",
@@ -67,7 +67,7 @@ export const projects: Project[] = [
   {
     title: "SaaS Blog",
     japanese: "ブログプラットフォーム",
-    description: "Plataforma SaaS de blogging con autenticación y planes de precios",
+    description: "Plataforma SaaS de blogging con autenticación y planes de precios.",
     image: sassBlogImage,
     tags: ["NextJS", "TailwindCSS", "Prisma", "Stripe", "Supabase"],
     github: "#",
@@ -77,7 +77,7 @@ export const projects: Project[] = [
   {
     title: "Premium Rental Cars",
     japanese: "高級車レンタル",
-    description: "Servicio de alquiler de coches premium con gestión de flota",
+    description: "Servicio de alquiler de coches premium con gestión de flota.",
     image: rentalImage,
     tags: ["NextJS", "TailwindCSS", "Prisma", "Stripe", "Uploadthing"],
     github: "#",
