@@ -85,14 +85,19 @@ export default function Navigation() {
       <div className="pattern-bg"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo/Profile */}
+            {/* Logo/Profile */}
           <Link
             href="/#hero"
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity group"
           >
             <ProfileImage size="small" />
-            <span className="text-japanese text-xl font-bold text-primary hidden sm:block">
-              美は、シンプルさの中に
+            <span className="text-japanese text-xl font-bold text-primary hidden sm:block relative w-96 overflow-hidden">
+              <span className="group-hover:opacity-0 group-hover:translate-x-4 transition-all duration-500 inline-block">
+                美は、シンプルさの中に
+              </span>
+              <span className="absolute inset-0 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 inline-block whitespace-nowrap">
+                La belleza está en la simplicidad
+              </span>
             </span>
           </Link>
 
