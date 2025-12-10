@@ -1,7 +1,8 @@
 // data/portfolio-context.ts
-import { skills } from "@/data/skills";
+
+import { educations, experiences } from "@/data/experience";
 import { projects } from "@/data/projects";
-import { experiences, educations } from "@/data/experience";
+import { skills } from "@/data/skills";
 import { socialLinks } from "@/data/socials";
 
 export function generatePortfolioContext(): string {
@@ -14,7 +15,7 @@ export function generatePortfolioContext(): string {
   const projectsText = projects
     .map(
       (p) =>
-        `- ${p.title}: ${p.description} (Tecnologías: ${p.tags.join(", ")}). Demo: ${p.demo}`
+        `- ${p.title}: ${p.description} (Tecnologías: ${p.tags.join(", ")}). Demo: ${p.demo}`,
     )
     .join("\n");
 
@@ -22,7 +23,7 @@ export function generatePortfolioContext(): string {
   const experienceText = experiences
     .map(
       (exp) =>
-        `- ${exp.title} en ${exp.sub_title} (${exp.years}): ${exp.details}`
+        `- ${exp.title} en ${exp.sub_title} (${exp.years}): ${exp.details}`,
     )
     .join("\n");
 
@@ -30,7 +31,7 @@ export function generatePortfolioContext(): string {
   const educationText = educations
     .map(
       (edu) =>
-        `- ${edu.title} en ${edu.sub_title} (${edu.years}): ${edu.details}`
+        `- ${edu.title} en ${edu.sub_title} (${edu.years}): ${edu.details}`,
     )
     .join("\n");
 

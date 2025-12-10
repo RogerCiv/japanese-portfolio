@@ -90,8 +90,8 @@ export default function Hero() {
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
                 Creando experiencias digitales únicas con código limpio y un
                 enfoque versátil. Transformo ideas en realidad, adaptando el
-                diseño y la funcionalidad a las necesidades específicas de
-                cada proyecto, sin limitarme a un solo estilo.
+                diseño y la funcionalidad a las necesidades específicas de cada
+                proyecto, sin limitarme a un solo estilo.
               </p>
             </div>
 

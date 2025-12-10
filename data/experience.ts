@@ -18,7 +18,8 @@ export const educations: TimelineItem[] = [
     japanese: "ネットワーク",
   },
   {
-    title: "Certificado de Profesionalidad en Sistemas Microinformáticos y Redes",
+    title:
+      "Certificado de Profesionalidad en Sistemas Microinformáticos y Redes",
     sub_title: "Academia Hermanos Naranjo, Granada",
     years: "2018",
     details:

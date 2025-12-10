@@ -1,6 +1,7 @@
 // app/api/chat/route.ts
-import { NextResponse } from "next/server";
+
 import Groq from "groq-sdk";
+import { NextResponse } from "next/server";
 import { generatePortfolioContext } from "@/data/portfolio-context";
 
 const groq = new Groq({
@@ -28,7 +29,7 @@ export async function POST(request: Request) {
     if (!Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json(
         { error: "Mensajes inválidos" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -54,13 +55,13 @@ export async function POST(request: Request) {
         try {
           for await (const chunk of completion) {
             const content = chunk.choices[0]?.delta?.content || "";
-            
+
             if (content) {
               const data = JSON.stringify({ content });
               controller.enqueue(encoder.encode(`data: ${data}\n\n`));
             }
           }
-          
+
           controller.enqueue(encoder.encode("data: [DONE]\n\n"));
           controller.close();
         } catch (error) {
@@ -93,9 +94,6 @@ export async function POST(request: Request) {
     }
 
     // ✅ NextResponse para errores (funciona perfectamente)
-    return NextResponse.json(
-      { error: errorMessage },
-      { status }
-    );
+    return NextResponse.json({ error: errorMessage }, { status });
   }
 }

@@ -1,20 +1,20 @@
 import diversiaImage from "@/public/images/projects/diversia.avif";
-import nokenStudyImage from "@/public/images/projects/noken-study.avif";
 import illustratorImage from "@/public/images/projects/ilustradora.avif";
 import nokenImage from "@/public/images/projects/noken.avif";
+import nokenStudyImage from "@/public/images/projects/noken-study.avif";
 import portfolioImage from "@/public/images/projects/portfolio1.avif";
+import astroPortfolioImage from "@/public/images/projects/portfolio2.avif";
+import recursosWebImage from "@/public/images/projects/recursos.avif";
 import rentalImage from "@/public/images/projects/rental.avif";
 import sassBlogImage from "@/public/images/projects/saas.avif";
-import recursosWebImage from "@/public/images/projects/recursos.avif";
-import astroPortfolioImage from "@/public/images/projects/portfolio2.avif";
 import type { Project } from "@/types/project";
 
 export const projects: Project[] = [
-
   {
     title: "Diversia Interiorismo",
     japanese: "インテリアデザイン",
-    description: "Sitio web corporativo especializado en neuroarquitectura y diseño biofílico.",
+    description:
+      "Sitio web corporativo especializado en neuroarquitectura y diseño biofílico.",
     image: diversiaImage,
     tags: ["NextJS", "TailwindCSS", "Prisma", "Turso", "Cloudflare", "Vercel"],
     github: "#",
@@ -23,7 +23,8 @@ export const projects: Project[] = [
   {
     title: "Recursos Web",
     japanese: "開発者リソース",
-    description: "Directorio curado de recursos y herramientas para desarrolladores web.",
+    description:
+      "Directorio curado de recursos y herramientas para desarrolladores web.",
     image: recursosWebImage,
     tags: ["Astro", "TailwindCSS"],
     github: "#",
@@ -56,7 +57,7 @@ export const projects: Project[] = [
     github: "#",
     demo: "https://ilustradora.netlify.app",
   },
-    {
+  {
     title: "Roger Civ Dev",
     japanese: "ポートフォリオ (Astro)",
     description: "Portfolio personal rápido y optimizado construido con Astro.",
@@ -65,7 +66,7 @@ export const projects: Project[] = [
     github: "#",
     demo: "https://rogercivdev.vercel.app/",
   },
-    {
+  {
     title: "Portfolio Nextjs",
     japanese: "ポートフォリオ",
     description: "Portfolio personal moderno y responsive.",
@@ -77,7 +78,8 @@ export const projects: Project[] = [
   {
     title: "SaaS Blog",
     japanese: "ブログプラットフォーム",
-    description: "Plataforma SaaS de blogging con autenticación y planes de precios.",
+    description:
+      "Plataforma SaaS de blogging con autenticación y planes de precios.",
     image: sassBlogImage,
     tags: ["NextJS", "TailwindCSS", "Prisma", "Stripe", "Supabase"],
     github: "#",

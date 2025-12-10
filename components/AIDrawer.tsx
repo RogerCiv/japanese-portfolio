@@ -1,17 +1,17 @@
 // components/AIDrawer.tsx
 "use client";
 
-import { useState, useRef, useEffect } from "react";
 import {
+  AlertCircle,
+  Bot,
+  ExternalLink,
   MessageCircle,
-  X,
   Send,
   Sparkles,
   User,
-  Bot,
-  AlertCircle,
-  ExternalLink,
+  X,
 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 interface Message {
   role: "user" | "assistant";
@@ -91,10 +91,7 @@ export default function AIDrawer() {
 
     // Añadir mensaje vacío del asistente que se irá llenando
     const assistantMessageIndex = messages.length + 1;
-    setMessages((prev) => [
-      ...prev,
-      { role: "assistant", content: "" },
-    ]);
+    setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
 
     try {
       // ✅ Crear nuevo AbortController para esta request
