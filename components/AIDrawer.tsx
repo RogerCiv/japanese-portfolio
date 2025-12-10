@@ -1,4 +1,3 @@
-// components/AIDrawer.tsx
 "use client";
 
 import {
@@ -23,11 +22,11 @@ function formatMessageContent(content: string) {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   const parts = content.split(urlRegex);
 
-  return parts.map((part, index) => {
+  return parts.map((part, partIndex) => {
     if (part.match(urlRegex)) {
       return (
         <a
-          key={index}
+          key={`url-${partIndex}-${part}`}
           href={part}
           target="_blank"
           rel="noopener noreferrer"
@@ -38,7 +37,7 @@ function formatMessageContent(content: string) {
         </a>
       );
     }
-    return <span key={index}>{part}</span>;
+    return <span key={`text-${partIndex}-${part}`}>{part}</span>;
   });
 }
 
@@ -61,7 +60,7 @@ export default function AIDrawer() {
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -152,20 +151,20 @@ export default function AIDrawer() {
                   return newMessages;
                 });
               }
-            } catch (e) {
+            } catch (_e) {
               // Ignorar errores de parsing
             }
           }
         }
       }
-    } catch (err: any) {
-      if (err.name === "AbortError") {
+    } catch (err: unknown) {
+      if (err instanceof Error && err.name === "AbortError") {
         console.log("Request abortada");
         return;
       }
 
       console.error("Error:", err);
-      setError(err.message);
+      setError(err instanceof Error ? err.message : "Error desconocido");
 
       // ✅ Reemplazar el mensaje vacío con un error
       setMessages((prev) => {
@@ -249,7 +248,7 @@ export default function AIDrawer() {
         <div className="flex-1 overflow-y-auto p-4 space-y-4 h-[calc(100vh-200px)]">
           {messages.map((message, index) => (
             <div
-              key={index}
+              key={message.role}
               className={`flex gap-3 ${
                 message.role === "user" ? "flex-row-reverse" : "flex-row"
               }`}
@@ -322,9 +321,14 @@ export default function AIDrawer() {
 
       {/* Overlay */}
       {isOpen && (
-        <div
-          className="fixed inset-0 bg-foreground/20 backdrop-blur-sm z-40"
+        <button
+          type="button"
+          className="fixed inset-0 bg-foreground/20 backdrop-blur-sm z-40 w-full h-full border-0 p-0 cursor-default"
           onClick={() => setIsOpen(false)}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") setIsOpen(false);
+          }}
+          aria-label="Cerrar chat"
         />
       )}
     </>
