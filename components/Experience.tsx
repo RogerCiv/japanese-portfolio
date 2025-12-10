@@ -1,4 +1,4 @@
-import { Briefcase, Calendar, GraduationCap } from "lucide-react";
+import { Briefcase, GraduationCap } from "lucide-react";
 import { educations, experiences } from "@/data/experience";
 import { TimelineSection } from "./TimelineSection";
 

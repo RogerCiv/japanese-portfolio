@@ -79,18 +79,20 @@ export async function POST(request: Request) {
         Connection: "keep-alive",
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("❌ Groq Error:", error);
 
     let errorMessage = "Error al procesar la solicitud.";
     let status = 500;
 
-    if (error.status === 429) {
-      errorMessage = "Límite de requests alcanzado.";
-      status = 429;
-    } else if (error.status === 401) {
-      errorMessage = "API Key inválida.";
-      status = 401;
+    if (error && typeof error === "object" && "status" in error) {
+      if (error.status === 429) {
+        errorMessage = "Límite de requests alcanzado.";
+        status = 429;
+      } else if (error.status === 401) {
+        errorMessage = "API Key inválida.";
+        status = 401;
+      }
     }
 
     // ✅ NextResponse para errores (funciona perfectamente)

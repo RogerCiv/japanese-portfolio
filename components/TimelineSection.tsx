@@ -57,7 +57,7 @@ export function TimelineSection({
       <div className="space-y-6">
         {items.map((item, index) => (
           <div
-            key={index}
+            key={`${item.title}-${item.years}`}
             className={`group relative bg-background border-l-4 ${colors.border}/30 ${colors.borderHover} transition-all duration-300 p-6`}
           >
             {/* Decoración esquina */}
