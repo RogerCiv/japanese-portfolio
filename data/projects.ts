@@ -1,4 +1,5 @@
 import diversiaImage from "@/public/images/projects/diversia.avif";
+import nokenStudyImage from "@/public/images/projects/noken-study.avif";
 import illustratorImage from "@/public/images/projects/ilustradora.avif";
 import nokenImage from "@/public/images/projects/noken.avif";
 import portfolioImage from "@/public/images/projects/portfolio1.avif";
@@ -27,6 +28,15 @@ export const projects: Project[] = [
     tags: ["Astro", "TailwindCSS"],
     github: "#",
     demo: "https://web-recursos.vercel.app",
+  },
+  {
+    title: "Noken Study",
+    japanese: "日本語学習",
+    description: "Aplicación de estudio de vocabulario para el examen JLPT.",
+    image: nokenStudyImage,
+    tags: ["NextJS", "TailwindCSS"],
+    github: "#",
+    demo: "https://noken-study.vercel.app",
   },
   {
     title: "Noken Vocabulary",

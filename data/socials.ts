@@ -7,12 +7,12 @@ export const socialLinks: SocialLink[] = [
   {
     image: githubImage,
     label: "GitHub",
-    href: "https://github.com/tuusuario",
+    href: "https://github.com/rogerciv",
   },
   {
     image: linkedinImage,
     label: "LinkedIn",
-    href: "https://linkedin.com/in/tuusuario",
+    href: "https://linkedin.com/in/rogerciv",
   },
   {
     image: instagramImage,
