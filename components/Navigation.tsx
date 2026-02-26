@@ -2,6 +2,7 @@
 import Link from "next/link";
 import NavLinks from "./NavLinks";
 import ProfileImage from "./Shared/ProfileImage";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function Navigation() {
   return (
@@ -25,8 +26,11 @@ export default function Navigation() {
             </span>
           </Link>
 
-          {/* NavLinks — Client Component con scroll tracking y menú móvil */}
-          <NavLinks />
+          {/* NavLinks y ThemeToggle */}
+          <div className="flex items-center gap-4 md:gap-5">
+            <NavLinks />
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </nav>

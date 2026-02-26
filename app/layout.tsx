@@ -4,6 +4,7 @@ import "./globals.css";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 import AIDrawerLazy from "@/components/AIDrawerLazy";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const notoSans = Noto_Sans_JP({
   variable: "--font-noto-sans",
@@ -28,14 +29,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${notoSans.variable} ${notoSerif.variable} antialiased`}
       >
-        <Navigation />
-        <main className="min-h-screen">{children}</main>
-        <Contact />
-        <AIDrawerLazy />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navigation />
+          <main className="min-h-screen">{children}</main>
+          <Contact />
+          <AIDrawerLazy />
+        </ThemeProvider>
       </body>
     </html>
   );
