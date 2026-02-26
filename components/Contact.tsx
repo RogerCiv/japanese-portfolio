@@ -4,6 +4,7 @@ import { socialLinks } from "@/data/socials";
 import ProfileImage from "./Shared/ProfileImage";
 
 export default function Contact() {
+
   return (
     <section
       id="contact"
@@ -112,7 +113,7 @@ export default function Contact() {
           心を込めて作られました
         </p>
         <p className="text-foreground/60 text-sm">
-          © 2025 Roger Civ. Todos los derechos reservados.
+          © {new Date().getFullYear()} Roger Civ. Todos los derechos reservados.
         </p>
       </div>
     </section>

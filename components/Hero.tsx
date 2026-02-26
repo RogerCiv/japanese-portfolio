@@ -1,4 +1,3 @@
-"use client";
 
 import { Calendar, Mail, MapPin } from "lucide-react";
 import Image from "next/image";

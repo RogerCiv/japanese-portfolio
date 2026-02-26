@@ -1,91 +1,15 @@
-"use client";
+// Server Component — no "use client"
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import NavLinks from "./NavLinks";
 import ProfileImage from "./Shared/ProfileImage";
 
-interface NavItem {
-  href: string;
-  label: string;
-}
-
-const navItems: NavItem[] = [
-  { href: "#hero", label: "HOME" },
-  { href: "#projects", label: "PROJECTS" },
-  { href: "#skills", label: "SKILLS" },
-  { href: "#experience", label: "EXPERIENCE" },
-  { href: "#contact", label: "CONTACT" },
-];
-
 export default function Navigation() {
-  const [activeHash, setActiveHash] = useState("");
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    // Establecer hash inicial
-    const hash = window.location.hash || "#hero";
-    setActiveHash(hash);
-
-    const handleHashChange = () => {
-      setActiveHash(window.location.hash || "#hero");
-    };
-
-    // Observar scroll para actualizar el hash activo
-    const handleScroll = () => {
-      const sections = navItems
-        .map((item) => document.querySelector(item.href))
-        .filter(Boolean);
-
-      // Detectar si estamos en el final de la página
-      const isAtBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 50;
-
-      // Si estamos al final, marcar como activo contact
-      if (isAtBottom) {
-        setActiveHash((prev) => (prev !== "#contact" ? "#contact" : prev));
-        return;
-      }
-
-      let currentSection = "#hero";
-
-      for (const section of sections) {
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          // Si la sección está en el viewport (con un offset para la navbar)
-          if (rect.top <= 150 && rect.bottom >= 150) {
-            currentSection = `#${section.id}`;
-          }
-        }
-      }
-
-      // Solo actualizar si cambió
-      setActiveHash((prev) =>
-        prev !== currentSection ? currentSection : prev,
-      );
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    // Llamar una vez al montar para establecer la sección inicial
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const isActive = (href: string) => {
-    return activeHash === href;
-  };
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-accent/50">
-      <div className="pattern-bg"></div>
+      <div className="pattern-bg" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-            {/* Logo/Profile */}
+        <div className="relative flex justify-between items-center h-16">
+          {/* Logo / Profile — estático, renderizado en servidor */}
           <Link
             href="/#hero"
             className="flex items-center gap-3 hover:opacity-80 transition-opacity group"
@@ -101,132 +25,9 @@ export default function Navigation() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="relative inline-block group"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const target = document.querySelector(item.href);
-                  if (target) {
-                    target.scrollIntoView({ behavior: "smooth" });
-                    window.history.pushState(null, "", item.href);
-                    setActiveHash(item.href);
-                  }
-                }}
-              >
-                <span
-                  className={`text-sm font-medium hover:text-accent transition-colors duration-300 ${
-                    isActive(item.href) ? "text-accent" : "text-foreground"
-                  }`}
-                >
-                  {item.label}
-                </span>
-                {isActive(item.href) && (
-                  <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
-                    <svg
-                      width="19"
-                      height="18"
-                      viewBox="0 0 240 240"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="opacity-80"
-                    >
-                      <title>Active Indicator</title>
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M67.2 79.3L120 43L172.8 79.3L120 115.6L67.2 79.3ZM67.2 160.7L120 124.4L172.8 160.7L120 197L67.2 160.7ZM62.8 83.7L10 120L62.8 156.3L115.6 120L62.8 83.7ZM124.4 120L177.2 83.7L230 120L177.2 156.3L124.4 120Z"
-                        fill="currentColor"
-                        className="text-accent"
-                      />
-                    </svg>
-                  </div>
-                )}
-              </Link>
-            ))}
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-foreground hover:text-accent transition-colors"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <title>Toggle menu</title>
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d={
-                  isMobileMenuOpen
-                    ? "M6 18L18 6M6 6l12 12"
-                    : "M4 6h16M4 12h16M4 18h16"
-                }
-              />
-            </svg>
-          </button>
+          {/* NavLinks — Client Component con scroll tracking y menú móvil */}
+          <NavLinks />
         </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden pb-4 pt-2 border-t border-accent/30">
-            <div className="flex flex-col space-y-3">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const target = document.querySelector(item.href);
-                    if (target) {
-                      target.scrollIntoView({ behavior: "smooth" });
-                      window.history.pushState(null, "", item.href);
-                      setActiveHash(item.href);
-                      setIsMobileMenuOpen(false);
-                    }
-                  }}
-                  className={`text-sm font-medium hover:text-accent transition-colors duration-300 py-2 ${
-                    isActive(item.href) ? "text-accent" : "text-foreground"
-                  }`}
-                >
-                  {item.label}
-                  {isActive(item.href) && (
-                    <span className="ml-2 inline-block">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 240 240"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="inline opacity-80"
-                      >
-                        <title>Active Indicator</title>
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M67.2 79.3L120 43L172.8 79.3L120 115.6L67.2 79.3ZM67.2 160.7L120 124.4L172.8 160.7L120 197L67.2 160.7ZM62.8 83.7L10 120L62.8 156.3L115.6 120L62.8 83.7ZM124.4 120L177.2 83.7L230 120L177.2 156.3L124.4 120Z"
-                          fill="currentColor"
-                          className="text-accent"
-                        />
-                      </svg>
-                    </span>
-                  )}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );
