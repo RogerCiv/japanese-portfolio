@@ -3,6 +3,7 @@ import Link from "next/link";
 import NavLinks from "./NavLinks";
 import ProfileImage from "./Shared/ProfileImage";
 import { ThemeToggle } from "./ThemeToggle";
+import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
 
 export default function Navigation() {
   return (
@@ -29,7 +30,7 @@ export default function Navigation() {
           {/* NavLinks y ThemeToggle */}
           <div className="flex items-center gap-4 md:gap-5">
             <NavLinks />
-            <ThemeToggle />
+            <AnimatedThemeToggler />
           </div>
         </div>
       </div>
