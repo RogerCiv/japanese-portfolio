@@ -51,8 +51,8 @@ const INITIAL_MESSAGES: UIMessage[] = [
   },
 ];
 
-export default function AIDrawer() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function AIDrawer({ initialOpen = false }: { initialOpen?: boolean }) {
+  const [isOpen, setIsOpen] = useState(initialOpen);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);

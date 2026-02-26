@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
-import AIDrawer from "@/components/AIDrawer";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
+import AIDrawerLazy from "@/components/AIDrawerLazy";
 
 const notoSans = Noto_Sans_JP({
   variable: "--font-noto-sans",
@@ -35,7 +35,7 @@ export default function RootLayout({
         <Navigation />
         <main className="min-h-screen">{children}</main>
         <Contact />
-        <AIDrawer />
+        <AIDrawerLazy />
       </body>
     </html>
   );
