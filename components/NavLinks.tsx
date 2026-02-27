@@ -160,7 +160,7 @@ export default function NavLinks() {
             {/* Mobile Navigation */}
             {isMobileMenuOpen && (
                 <div className="absolute top-full left-0 right-0 md:hidden pb-4 pt-2 border-t border-accent/30 bg-background/95 backdrop-blur-sm">
-                    <div className="flex flex-col space-y-3 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                    <div className="flex flex-col items-end space-y-3 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                         {navItems.map((item) => (
                             <Link
                                 key={item.href}
@@ -170,15 +170,15 @@ export default function NavLinks() {
                                     scrollTo(item.href);
                                     setIsMobileMenuOpen(false);
                                 }}
-                                className={`text-sm font-medium hover:text-accent transition-colors duration-300 py-2 ${isActive(item.href) ? "text-accent" : "text-foreground"
+                                className={`flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors duration-300 py-2 ${isActive(item.href) ? "text-accent" : "text-foreground"
                                     }`}
                             >
-                                {item.label}
                                 {isActive(item.href) && (
-                                    <span className="ml-2 inline-block">
+                                    <span className="inline-block">
                                         <ActiveIndicator size={12} />
                                     </span>
                                 )}
+                                {item.label}
                             </Link>
                         ))}
                     </div>

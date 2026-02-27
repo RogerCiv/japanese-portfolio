@@ -19,15 +19,15 @@ export default function Hero() {
 
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto w-full">
         {/* Título en japonés arriba */}
-        <p className="text-japanese text-xl sm:text-2xl text-primary mb-12 opacity-80">
+        <p className="text-japanese text-lg sm:text-2xl text-primary mb-6 sm:mb-12 opacity-80">
           美は、シンプルさの中に。
         </p>
 
         {/* Grid principal */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-12 items-center mb-20 sm:mb-16">
           {/* Imagen de perfil con marco japonés personalizado */}
           <div className="relative inline-block mx-auto">
-            <div className="relative w-64 h-64 sm:w-96 sm:h-96">
+            <div className="relative w-48 h-48 sm:w-80 sm:h-80 md:w-96 md:h-96">
               {/* Marco decorativo japonés */}
               <div className="absolute inset-0">
                 <Image
@@ -53,17 +53,17 @@ export default function Hero() {
           </div>
 
           {/* Contenido principal */}
-          <div className="text-left space-y-6">
+          <div className="text-left space-y-4 sm:space-y-6">
             <div>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground leading-tight mb-4">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-foreground leading-tight mb-2 sm:mb-4">
                 Roger Civ
               </h1>
 
-              <p className="text-japanese text-2xl sm:text-3xl text-primary mb-2">
+              <p className="text-japanese text-xl sm:text-3xl text-primary mb-1 sm:mb-2">
                 ウェブ開発者
               </p>
 
-              <p className="text-xl sm:text-2xl text-accent font-semibold mb-4">
+              <p className="text-lg sm:text-2xl text-accent font-semibold mb-3 sm:mb-4">
                 Desarrollador Software
               </p>
             </div>
@@ -114,8 +114,8 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="text-xs text-foreground/60 uppercase tracking-wider">
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1 sm:gap-2 animate-bounce">
+        <span className="text-xs text-foreground/60 uppercase tracking-wider hidden sm:block">
           Scroll
         </span>
         <svg
