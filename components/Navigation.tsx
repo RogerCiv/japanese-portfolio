@@ -30,7 +30,7 @@ export default function Navigation() {
           {/* NavLinks y ThemeToggle */}
           <div className="flex items-center gap-4 md:gap-5">
             <NavLinks />
-            <AnimatedThemeToggler />
+            <AnimatedThemeToggler className="cursor-pointer" />
           </div>
         </div>
       </div>
