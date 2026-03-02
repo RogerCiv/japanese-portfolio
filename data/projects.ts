@@ -7,7 +7,7 @@ import astroPortfolioImage from "@/public/images/projects/portfolio2.avif";
 import recursosWebImage from "@/public/images/projects/recursos.avif";
 import rentalImage from "@/public/images/projects/rental.avif";
 import sassBlogImage from "@/public/images/projects/saas.avif";
-import type { Project } from "@/types/project";
+import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {

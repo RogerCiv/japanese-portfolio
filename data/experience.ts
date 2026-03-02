@@ -1,4 +1,4 @@
-import type { TimelineItem } from "@/types/experience";
+import type { TimelineItem } from "@/types";
 
 export const educations: TimelineItem[] = [
   {

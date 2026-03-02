@@ -6,7 +6,7 @@ import {
   Server,
   Wrench,
 } from "lucide-react";
-import type { Skill } from "@/types/skill";
+import type { Skill } from "@/types";
 
 export const skills: Skill[] = [
   {
