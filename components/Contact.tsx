@@ -4,7 +4,6 @@ import { socialLinks } from "@/data/socials";
 import ProfileImage from "./Shared/ProfileImage";
 
 export default function Contact() {
-
   return (
     <section
       id="contact"

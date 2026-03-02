@@ -28,7 +28,11 @@ const INITIAL_MESSAGES: UIMessage[] = [
   },
 ];
 
-export default function AIDrawer({ initialOpen = false }: { initialOpen?: boolean }) {
+export default function AIDrawer({
+  initialOpen = false,
+}: {
+  initialOpen?: boolean;
+}) {
   const [isOpen, setIsOpen] = useState(initialOpen);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -73,7 +77,7 @@ export default function AIDrawer({ initialOpen = false }: { initialOpen?: boolea
       <aside
         className={cn(
           "fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-background border-l-2 border-foreground/20 shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out",
-          isOpen ? "translate-x-0" : "translate-x-full"
+          isOpen ? "translate-x-0" : "translate-x-full",
         )}
         aria-hidden={!isOpen}
       >
@@ -174,7 +178,9 @@ function MessageItem({
       <div
         className={cn(
           "shrink-0 w-8 h-8 rounded-full flex items-center justify-center border",
-          isUser ? "bg-primary text-white border-primary" : "bg-foreground/10 text-foreground border-foreground/5"
+          isUser
+            ? "bg-primary text-white border-primary"
+            : "bg-foreground/10 text-foreground border-foreground/5",
         )}
       >
         {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
@@ -185,7 +191,7 @@ function MessageItem({
           "flex-1 px-4 py-3 rounded-2xl text-sm leading-relaxed",
           isUser
             ? "bg-primary text-white rounded-tr-none ml-8"
-            : "bg-foreground/5 text-foreground rounded-tl-none mr-8"
+            : "bg-foreground/5 text-foreground rounded-tl-none mr-8",
         )}
       >
         <div className="whitespace-pre-wrap">
