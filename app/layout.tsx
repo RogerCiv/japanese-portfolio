@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
+import AIDrawerLazy from "@/components/AIDrawerLazy";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
-import AIDrawerLazy from "@/components/AIDrawerLazy";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 const notoSans = Noto_Sans_JP({

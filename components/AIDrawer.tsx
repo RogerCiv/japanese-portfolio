@@ -1,7 +1,7 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { TextStreamChatTransport, isTextUIPart, type UIMessage } from "ai";
+import { isTextUIPart, TextStreamChatTransport, type UIMessage } from "ai";
 import {
   AlertCircle,
   Bot,

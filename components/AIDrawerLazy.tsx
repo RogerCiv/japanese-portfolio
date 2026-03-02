@@ -1,7 +1,7 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { MessageCircle } from "lucide-react";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 
 const AIDrawer = dynamic(() => import("@/components/AIDrawer"), {
