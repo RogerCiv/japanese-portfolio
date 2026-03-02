@@ -47,7 +47,7 @@ export const experiences: TimelineItem[] = [
   },
   {
     title: "Sistemas Microinformáticos y Redes en Prácticas",
-    sub_title: "Delegación Territorial de Medio Ambiente",
+    sub_title: "Delegación Territorial de Medio Ambiente - Junta de Andalucía",
     years: "2022",
     details:
       "Prácticas FCT en las que realicé tareas de mantenimiento y reparación de equipos informáticos, instalación de sistemas operativos y configuración de redes informáticas, adquiriendo habilidades y conocimientos necesarios para el soporte informático.",

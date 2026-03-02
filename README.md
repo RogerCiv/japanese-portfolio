@@ -146,7 +146,6 @@ Actualiza tu información en los siguientes archivos:
 
 Modifica los colores en:
 - `app/globals.css` - Variables CSS personalizadas
-- `tailwind.config.ts` - Configuración de Tailwind (si existe)
 
 ### Patrones Japoneses
 

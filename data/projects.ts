@@ -27,7 +27,7 @@ export const projects: Project[] = [
       "Directorio curado de recursos y herramientas para desarrolladores web.",
     image: recursosWebImage,
     tags: ["Astro", "TailwindCSS"],
-    github: "#",
+    github: "https://github.com/RogerCiv/web-resources",
     demo: "https://web-recursos.vercel.app",
   },
   {
