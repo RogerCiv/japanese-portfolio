@@ -64,7 +64,7 @@ export const projects: Project[] = [
     image: astroPortfolioImage,
     tags: ["Astro", "TailwindCSS"],
     github: "#",
-    demo: "https://rogercivdev.vercel.app/",
+    demo: "https://rogercivdev2.vercel.app/",
   },
   {
     title: "Portfolio Nextjs",
