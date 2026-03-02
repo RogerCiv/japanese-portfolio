@@ -124,10 +124,7 @@ japanese-portfolio/
 │       ├── projects/        # Screenshots de proyectos
 │       └── socials/
 └── types/                   # TypeScript types
-    ├── experience.ts
-    ├── project.ts
-    ├── skill.ts
-    └── socialLink.ts
+    └── index.ts
 ```
 
 ## 🎨 Personalización
