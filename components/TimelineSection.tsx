@@ -1,6 +1,6 @@
 import { Calendar } from "lucide-react";
 import type { ReactNode } from "react";
-import type { TimelineItem } from "@/types/experience";
+import type { TimelineItem } from "@/types";
 
 interface TimelineSectionProps {
   title: string;
