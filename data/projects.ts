@@ -6,6 +6,7 @@ import portfolioImage from "@/public/images/projects/portfolio1.avif";
 import astroPortfolioImage from "@/public/images/projects/portfolio2.avif";
 import recursosWebImage from "@/public/images/projects/recursos.avif";
 import rentalImage from "@/public/images/projects/rental.avif";
+import reviewForgeImage from "@/public/images/projects/review-forge.avif";
 import sassBlogImage from "@/public/images/projects/saas.avif";
 import type { Project } from "@/types";
 
@@ -38,6 +39,16 @@ export const projects: Project[] = [
     tags: ["NextJS", "TailwindCSS"],
     github: "#",
     demo: "https://noken-study.vercel.app",
+  },
+  {
+    title: "Review Forge",
+    japanese: "レビューサイト",
+    description:
+      "Plataforma de reseñas de productos con sistema de puntuación y comentarios.",
+    image: reviewForgeImage,
+    tags: ["NextJS", "TailwindCSS", "NestJS", "Prisma", "Neon", "Vercel", "Render"],
+    github: "#",
+    demo: "https://reviewforge-omega.vercel.app",
   },
   {
     title: "Noken Vocabulary",
