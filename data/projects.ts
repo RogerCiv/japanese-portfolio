@@ -8,6 +8,7 @@ import recursosWebImage from "@/public/images/projects/recursos.avif";
 import rentalImage from "@/public/images/projects/rental.avif";
 import reviewForgeImage from "@/public/images/projects/review-forge.avif";
 import sassBlogImage from "@/public/images/projects/saas.avif";
+import nokenMasterImage from "@/public/images/projects/noken-master.avif";
 import type { Project } from "@/types";
 
 export const projects: Project[] = [
@@ -20,6 +21,15 @@ export const projects: Project[] = [
     tags: ["NextJS", "TailwindCSS", "Prisma", "Turso", "Cloudflare", "Vercel"],
     github: "#",
     demo: "https://diversiainteriorismo.com",
+  },
+  {
+    title: "Noken Master",
+    japanese: "日本語能力試験マスター",
+    description: "Aplicación de estudio de vocabulario Noken para el examen JLPT.",
+    image: nokenMasterImage,
+    tags: ["NextJS", "TailwindCSS"],
+    github: "#",
+    demo: "https://noken-master.vercel.app",
   },
   {
     title: "Recursos Web",
