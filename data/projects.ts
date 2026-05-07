@@ -13,8 +13,8 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    title: "Diversia Interiorismo",
-    japanese: "インテリアデザイン",
+    title: "Espacio Diversia",
+    japanese: "ディベルシア空間",
     description:
       "Sitio web corporativo especializado en neuroarquitectura y diseño biofílico.",
     image: diversiaImage,
