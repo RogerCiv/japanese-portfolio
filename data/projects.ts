@@ -1,6 +1,7 @@
 import diversiaImage from "@/public/images/projects/diversia.avif";
 import illustratorImage from "@/public/images/projects/ilustradora.avif";
 import nokenImage from "@/public/images/projects/noken.avif";
+import nokenMasterImage from "@/public/images/projects/noken-master.avif";
 import nokenStudyImage from "@/public/images/projects/noken-study.avif";
 import portfolioImage from "@/public/images/projects/portfolio1.avif";
 import astroPortfolioImage from "@/public/images/projects/portfolio2.avif";
@@ -8,7 +9,6 @@ import recursosWebImage from "@/public/images/projects/recursos.avif";
 import rentalImage from "@/public/images/projects/rental.avif";
 import reviewForgeImage from "@/public/images/projects/review-forge.avif";
 import sassBlogImage from "@/public/images/projects/saas.avif";
-import nokenMasterImage from "@/public/images/projects/noken-master.avif";
 import type { Project } from "@/types";
 
 export const projects: Project[] = [
@@ -25,7 +25,8 @@ export const projects: Project[] = [
   {
     title: "Noken Master",
     japanese: "日本語能力試験マスター",
-    description: "Aplicación de estudio de vocabulario Noken para el examen JLPT.",
+    description:
+      "Aplicación de estudio de vocabulario Noken para el examen JLPT.",
     image: nokenMasterImage,
     tags: ["NextJS", "TailwindCSS"],
     github: "#",
@@ -56,7 +57,15 @@ export const projects: Project[] = [
     description:
       "Plataforma de reseñas de productos con sistema de puntuación y comentarios.",
     image: reviewForgeImage,
-    tags: ["NextJS", "TailwindCSS", "NestJS", "Prisma", "Neon", "Vercel", "Render"],
+    tags: [
+      "NextJS",
+      "TailwindCSS",
+      "NestJS",
+      "Prisma",
+      "Neon",
+      "Vercel",
+      "Render",
+    ],
     github: "#",
     demo: "https://reviewforge-omega.vercel.app",
   },

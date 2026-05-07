@@ -2,7 +2,6 @@
 import Link from "next/link";
 import NavLinks from "./NavLinks";
 import ProfileImage from "./Shared/ProfileImage";
-import { ThemeToggle } from "./ThemeToggle";
 import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
 
 export default function Navigation() {

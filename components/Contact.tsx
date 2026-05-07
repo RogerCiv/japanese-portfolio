@@ -69,6 +69,7 @@ export default function Contact() {
                     src={link.image}
                     alt={link.label}
                     fill
+                    sizes="80px"
                     className="object-contain p-2 grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
@@ -112,7 +113,7 @@ export default function Contact() {
           心を込めて作られました
         </p>
         <p className="text-foreground/60 text-sm">
-          © {new Date().getFullYear()} Roger Civ. Todos los derechos reservados.
+          © {new Date().getFullYear()} Roger Civ.
         </p>
       </div>
     </section>

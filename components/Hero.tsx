@@ -33,6 +33,7 @@ export default function Hero() {
                   src="/images/marco.avif"
                   alt="Marco decorativo"
                   fill
+                  sizes="(max-width: 640px) 192px, (max-width: 768px) 320px, 384px"
                   className="object-contain pointer-events-none"
                   priority
                 />
@@ -44,6 +45,7 @@ export default function Hero() {
                   src="/images/yo.avif"
                   alt="Perfil"
                   fill
+                  sizes="(max-width: 640px) 128px, (max-width: 768px) 240px, 304px"
                   className="object-cover hover:scale-110 transition-transform duration-500"
                   priority
                 />
