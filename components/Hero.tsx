@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-dvh flex items-center justify-center overflow-hidden pt-16"
+      className="relative min-h-dvh flex items-center justify-center overflow-hidden pt-24 sm:pt-20"
     >
       <div className="pattern-bg"></div>
 
@@ -18,15 +18,15 @@ export default function Hero() {
 
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto w-full">
         {/* Título en japonés arriba */}
-        <p className="text-japanese text-lg sm:text-2xl text-primary mb-6 sm:mb-12 opacity-80">
+        <p className="text-japanese text-base sm:text-2xl text-primary mb-4 sm:mb-12 opacity-80">
           美は、シンプルさの中に。
         </p>
 
         {/* Grid principal */}
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-12 items-center mb-20 sm:mb-16">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-12 items-center mb-14 sm:mb-16">
           {/* Imagen de perfil con marco japonés personalizado */}
           <div className="relative inline-block mx-auto">
-            <div className="relative w-48 h-48 sm:w-80 sm:h-80 md:w-96 md:h-96">
+            <div className="relative w-40 h-40 sm:w-80 sm:h-80 md:w-96 md:h-96">
               {/* Marco decorativo japonés */}
               <div className="absolute inset-0">
                 <Image
@@ -40,12 +40,12 @@ export default function Hero() {
               </div>
 
               {/* Imagen de perfil */}
-              <div className="absolute inset-8 sm:inset-10 rounded-lg overflow-hidden">
+              <div className="absolute inset-7 sm:inset-10 rounded-lg overflow-hidden">
                 <Image
                   src="/images/yo.avif"
                   alt="Perfil"
                   fill
-                  sizes="(max-width: 640px) 128px, (max-width: 768px) 240px, 304px"
+                  sizes="(max-width: 640px) 104px, (max-width: 768px) 240px, 304px"
                   className="object-cover hover:scale-110 transition-transform duration-500"
                   priority
                 />
@@ -54,23 +54,23 @@ export default function Hero() {
           </div>
 
           {/* Contenido principal */}
-          <div className="text-left space-y-4 sm:space-y-6">
+          <div className="text-left space-y-3 sm:space-y-6">
             <div>
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-foreground leading-tight mb-2 sm:mb-4">
+              <h1 className="text-3xl sm:text-6xl md:text-7xl font-bold text-foreground leading-tight mb-1 sm:mb-4">
                 Roger Civ
               </h1>
 
-              <p className="text-japanese text-xl sm:text-3xl text-primary mb-1 sm:mb-2">
+              <p className="text-japanese text-lg sm:text-3xl text-primary mb-1 sm:mb-2">
                 ウェブ開発者
               </p>
 
-              <p className="text-lg sm:text-2xl text-accent font-semibold mb-3 sm:mb-4">
+              <p className="text-base sm:text-2xl text-accent font-semibold mb-2 sm:mb-4">
                 Desarrollador Software
               </p>
             </div>
 
             {/* Info rápida */}
-            <div className="space-y-2 text-foreground/70">
+            <div className="space-y-1.5 text-sm sm:text-base text-foreground/70">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-primary" />
                 <span>Granada, España</span>
@@ -86,8 +86,8 @@ export default function Hero() {
             </div>
 
             {/* Descripción */}
-            <div className="border-l-4 border-primary pl-6">
-              <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
+            <div className="border-l-4 border-primary pl-4 sm:pl-6">
+              <p className="text-sm sm:text-lg text-foreground/80 leading-relaxed">
                 Creando experiencias digitales únicas con código limpio y un
                 enfoque versátil. Transformo ideas en realidad, adaptando el
                 diseño y la funcionalidad a las necesidades específicas de cada
@@ -96,7 +96,7 @@ export default function Hero() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
               <a
                 href="#projects"
                 className="btn-accent inline-block text-center group relative overflow-hidden"
