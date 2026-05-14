@@ -47,7 +47,7 @@ export function Works() {
                 <div className="absolute inset-0 bg-linear-to-t from-foreground/90 via-foreground/50 to-transparent"></div>
 
                 {/* Links */}
-                <div className="absolute bottom-4 left-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute bottom-4 left-4 right-4 flex gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                   <a
                     href={project.github}
                     className="flex-1 bg-background/90 hover:bg-background text-foreground px-3 py-2 text-sm flex items-center justify-center gap-2 transition-all"
