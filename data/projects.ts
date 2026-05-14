@@ -1,3 +1,4 @@
+import cronicaGodaImage from "@/public/images/projects/cronica-goda.avif";
 import diversiaImage from "@/public/images/projects/diversia.avif";
 import illustratorImage from "@/public/images/projects/ilustradora.avif";
 import nokenImage from "@/public/images/projects/noken.avif";
@@ -28,7 +29,7 @@ export const projects: Project[] = [
     description:
       "Aplicación de estudio de vocabulario Noken para el examen JLPT.",
     image: nokenMasterImage,
-    tags: ["NextJS", "TailwindCSS"],
+    tags: ["NextJS", "TailwindCSS", "PWA"],
     github: "#",
     demo: "https://noken-master.vercel.app",
   },
@@ -41,6 +42,16 @@ export const projects: Project[] = [
     tags: ["Astro", "TailwindCSS"],
     github: "https://github.com/RogerCiv/web-resources",
     demo: "https://web-recursos.vercel.app",
+  },
+  {
+    title: "Crónica Goda",
+    japanese: "ゴート年代記",
+    description:
+      "Web dedicada a la historia visigoda, con entradas detalladas de todos los reyes, desde Atanarico hasta Rodrigo.",
+    image: cronicaGodaImage,
+    tags: ["Astro", "TailwindCSS", "PWA", "View Transitions", "TypeScript", "Netlify", "NotebookLM"],
+    github: "#",
+    demo: "https://cronica-goda.netlify.app",
   },
   {
     title: "Noken Study",
