@@ -20,7 +20,7 @@ const notoSerif = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
-  title: "JPN Web Design - Portfolio & Web Design",
+  title: "JPN Web Design Roger Civ - Portfolio & Web Design",
   description: "Portfolio de diseño web con inspiración japonesa",
   icons: {
     icon: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   appleWebApp: {
-    title: "JPN Web Design",
+    title: "Roger Civ",
   },
 };
 
