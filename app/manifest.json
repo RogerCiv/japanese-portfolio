@@ -1,6 +1,6 @@
 {
-  "name": "RogerCiv",
-  "short_name": "RogerCiv",
+  "name": "Roger Civ Portfolio",
+  "short_name": "Roger-civ",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#f53d68",
+  "background_color": "#f53d68",
   "display": "standalone"
 }
