@@ -21,7 +21,7 @@ export const projects: Project[] = [
     image: diversiaImage,
     tags: ["NextJS", "TailwindCSS", "Prisma", "Turso", "Cloudflare", "Vercel"],
     github: "#",
-    demo: "https://www.espaciodiversia.es",
+    web: "https://www.espaciodiversia.es",
   },
   {
     title: "Noken Master",
@@ -31,7 +31,7 @@ export const projects: Project[] = [
     image: nokenMasterImage,
     tags: ["NextJS", "TailwindCSS", "PWA"],
     github: "#",
-    demo: "https://noken-master.vercel.app",
+    web: "https://noken-master.vercel.app",
   },
   {
     title: "Recursos Web",
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     image: recursosWebImage,
     tags: ["Astro", "TailwindCSS"],
     github: "https://github.com/RogerCiv/web-resources",
-    demo: "https://web-recursos.vercel.app",
+    web: "https://web-recursos.vercel.app",
   },
   {
     title: "Crónica Goda",
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     image: cronicaGodaImage,
     tags: ["Astro", "TailwindCSS", "PWA", "View Transitions", "TypeScript", "Netlify", "NotebookLM"],
     github: "#",
-    demo: "https://cronica-goda.netlify.app",
+    web: "https://cronica-goda.netlify.app",
   },
   {
     title: "Noken Study",
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     image: nokenStudyImage,
     tags: ["NextJS", "TailwindCSS"],
     github: "#",
-    demo: "https://noken-study.vercel.app",
+    web: "https://noken-study.vercel.app",
   },
   {
     title: "Review Forge",
@@ -78,7 +78,7 @@ export const projects: Project[] = [
       "Render",
     ],
     github: "#",
-    demo: "https://reviewforge-omega.vercel.app",
+    web: "https://reviewforge-omega.vercel.app",
   },
   {
     title: "Noken Vocabulary",
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     image: nokenImage,
     tags: ["React", "TailwindCSS", "Supabase", "React-router"],
     github: "#",
-    demo: "https://noken-vocabulary.vercel.app",
+    web: "https://noken-vocabulary.vercel.app",
   },
   {
     title: "Illustrator Amelia",
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     image: illustratorImage,
     tags: ["Astro", "TailwindCSS"],
     github: "#",
-    demo: "https://ilustradora.netlify.app",
+    web: "https://ilustradora.netlify.app",
   },
   {
     title: "Roger Civ Dev",
@@ -105,7 +105,7 @@ export const projects: Project[] = [
     image: astroPortfolioImage,
     tags: ["Astro", "TailwindCSS"],
     github: "#",
-    demo: "https://rogercivdev2.vercel.app/",
+    web: "https://rogercivdev2.vercel.app/",
   },
   {
     title: "Portfolio Nextjs",
@@ -114,7 +114,7 @@ export const projects: Project[] = [
     image: portfolioImage,
     tags: ["NextJS", "TailwindCSS"],
     github: "#",
-    demo: "https://rogerciv.vercel.app",
+    web: "https://rogerciv.vercel.app",
   },
   {
     title: "SaaS Blog",
@@ -124,7 +124,7 @@ export const projects: Project[] = [
     image: sassBlogImage,
     tags: ["NextJS", "TailwindCSS", "Prisma", "Stripe", "Supabase"],
     github: "#",
-    demo: "https://saas-blog-nextjs.vercel.app",
+    web: "https://saas-blog-nextjs.vercel.app",
   },
 
   {
@@ -134,6 +134,6 @@ export const projects: Project[] = [
     image: rentalImage,
     tags: ["NextJS", "TailwindCSS", "Prisma", "Stripe", "Uploadthing"],
     github: "#",
-    demo: "https://rental-cars-test.vercel.app",
+    web: "https://rental-cars-test.vercel.app",
   },
 ];

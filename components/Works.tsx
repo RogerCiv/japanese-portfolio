@@ -56,7 +56,7 @@ export function Works() {
                     Code
                   </a>
                   <a
-                    href={project.demo}
+                    href={project.web}
                     rel="noopener noreferrer"
                     target="_blank"
                     className="flex-1 bg-primary hover:bg-primary/90 text-white px-3 py-2 text-sm flex items-center justify-center gap-2 transition-all"

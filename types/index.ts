@@ -16,7 +16,7 @@ export interface Project {
   image: StaticImageData;
   tags: string[];
   github: string;
-  demo: string;
+  web: string;
 }
 
 export interface Skill {

@@ -11,7 +11,7 @@ export function generatePortfolioContext(): string {
   const projectsText = projects
     .map(
       (p) =>
-        `- ${p.title}: ${p.description} (Tecnologías: ${p.tags.join(", ")}). Demo: ${p.demo}`,
+        `- ${p.title}: ${p.description} (Tecnologías: ${p.tags.join(", ")}). Demo: ${p.web}`,
     )
     .join("\n");
 
