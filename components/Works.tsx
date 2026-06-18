@@ -62,7 +62,7 @@ export function Works() {
                     className="flex-1 bg-primary hover:bg-primary/90 text-white px-3 py-2 text-sm flex items-center justify-center gap-2 transition-all"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    Demo
+                    Web
                   </a>
                 </div>
               </div>

@@ -1,5 +1,5 @@
 import cronicaGodaImage from "@/public/images/projects/cronica-goda.avif";
-import diversiaImage from "@/public/images/projects/diversia.avif";
+import diversiaImage from "@/public/images/projects/espacio-diversia.webp";
 import illustratorImage from "@/public/images/projects/ilustradora.avif";
 import nokenImage from "@/public/images/projects/noken.avif";
 import nokenMasterImage from "@/public/images/projects/noken-master.avif";
@@ -21,7 +21,7 @@ export const projects: Project[] = [
     image: diversiaImage,
     tags: ["NextJS", "TailwindCSS", "Prisma", "Turso", "Cloudflare", "Vercel"],
     github: "#",
-    demo: "https://diversiainteriorismo.com",
+    demo: "https://www.espaciodiversia.es",
   },
   {
     title: "Noken Master",
