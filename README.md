@@ -206,7 +206,7 @@ Este proyecto es de código abierto bajo la licencia MIT.
 
 ## 👤 Autor
 
-**Roger Garcia**
+**Roger Civ**
 
 - GitHub: [@RogerCiv](https://github.com/RogerCiv)
 - Email: rogercivdev@gmail.com
