@@ -147,6 +147,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth" suppressHydrationWarning>
+    <head>
+      <meta name="google-site-verification" content="gwlgeNsfdspJp4JwbujAZa0njIROX9-9cubbziLc-Ow" />
+    </head>
       <body
         className={`${notoSans.variable} ${notoSerif.variable} antialiased`}
       >
