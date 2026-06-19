@@ -31,7 +31,7 @@ export default function Hero() {
               <div className="absolute inset-0">
                 <Image
                   src="/images/marco.avif"
-                  alt="Marco decorativo"
+                  alt="Marco decorativo japonés tradicional alrededor de la foto de perfil"
                   fill
                   sizes="(max-width: 640px) 192px, (max-width: 768px) 320px, 384px"
                   className="object-contain pointer-events-none"
@@ -43,7 +43,7 @@ export default function Hero() {
               <div className="absolute inset-7 sm:inset-10 rounded-lg overflow-hidden">
                 <Image
                   src="/images/yo.avif"
-                  alt="Perfil"
+                  alt="Roger Civ - Desarrollador Web Full Stack en Granada"
                   fill
                   sizes="(max-width: 640px) 104px, (max-width: 768px) 240px, 304px"
                   className="object-cover hover:scale-110 transition-transform duration-500"

@@ -16,7 +16,12 @@ export default function NotFound() {
       <div className="max-w-2xl mx-auto text-center relative z-10">
         {/* Número 404 grande */}
         <div className="mb-8">
-          <h1 className="text-9xl font-bold text-primary/20 mb-4">404</h1>
+          <div
+            className="text-9xl font-bold text-primary/20 mb-4"
+            role="presentation"
+          >
+            404
+          </div>
           <p className="text-japanese text-3xl text-primary mb-2">
             ページが見つかりません
           </p>
@@ -26,7 +31,7 @@ export default function NotFound() {
         <div className="relative w-64 h-64 mx-auto mb-8">
           <Image
             src="/images/404.avif"
-            alt="Página no encontrada"
+            alt="Ilustración decorativa 404 con temática japonesa - página no encontrada"
             fill
             className="object-contain opacity-60"
           />
@@ -34,9 +39,9 @@ export default function NotFound() {
 
         {/* Mensaje */}
         <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold text-foreground">
+          <h1 className="text-3xl font-bold text-foreground">
             Página no encontrada
-          </h2>
+          </h1>
           <p className="text-lg text-foreground/70 leading-relaxed">
             La página que buscas no existe o ha sido movida. Como dice el
             proverbio japonés:{" "}
